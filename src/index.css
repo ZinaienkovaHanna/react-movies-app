@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+:root {
+    --text: #fff;
+    --background: #10141e;
+    --icon: #5a698f;
+    --backgroundMenu: #161d2f;
+    --backgroundArrow: #161d2f;
+    --hover: #fc4747;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    background: var(--background);
+}

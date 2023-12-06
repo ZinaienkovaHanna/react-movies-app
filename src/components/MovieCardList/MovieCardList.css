@@ -1,0 +1,31 @@
+.movie_container {
+    max-width: 1340px;
+    margin: 24px auto;
+}
+
+.movie_title {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+.slick-prev {
+    left: -48px;
+}
+
+.slick-next {
+    right: -24px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: var(--icon);
+    font-size: 40px;
+    opacity: 0.25;
+}
+
+.slick-dots li button:before {
+    background-color: var(--icon);
+    font-size: 0px;
+    height: 4px;
+}

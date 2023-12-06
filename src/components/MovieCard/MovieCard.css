@@ -1,0 +1,38 @@
+.movie_card {
+    width: 180px;
+}
+
+.movie_card_flex {
+    display: flex;
+}
+
+.movie_year,
+.movie_rating,
+.movie_votes {
+    padding-right: 12px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.movie_card_img {
+    width: 180px;
+    border-radius: 8px;
+}
+
+.movie_card_title {
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.movie_rating_icon {
+    padding-right: 2px;
+    padding-top: 12px;
+    font-size: 14px;
+}
+
+.movie_votes_icon {
+    padding-right: 4px;
+    padding-top: 12px;
+    font-size: 14px;
+}
