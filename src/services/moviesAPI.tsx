@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { MovieType } from '../types/moviesTypes';
-// import dotenv from 'dotenv';
+import * as token from './TOKEN.json';
 
-// dotenv.config();
-
-// const BASE_URL: string | undefined = process.env.REACT_APP_BASE_URL;
-// const BASE_URL_IMAGE: string | undefined = process.env.REACT_APP_BASE_URL_IMAGE;
-// const ACCESS_TOKEN: string | undefined = process.env.REACT_APP_ACCESS_TOKEN;
+const { ACCESS_TOKEN } = token;
+const BASE_URL = 'http://api.themoviedb.org';
+const BASE_URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
 const instance = axios.create({
     baseURL: BASE_URL,
