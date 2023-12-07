@@ -12,13 +12,20 @@ interface MovieCardProps {
 
 const MovieList: React.FC<MovieCardProps> = ({ title, fetchMovies }) => {
     const [movies, setMovies] = useState<MovieType[]>([]);
+    const [loader, setLoader] = useState<boolean>(true);
     const [startIndex, setStartIndex] = useState(0);
     const cardsPerPage = 6;
 
     useEffect(() => {
         const fetchData = async () => {
-            const fetchedMovies = await fetchMovies();
-            setMovies(fetchedMovies);
+            try {
+                const fetchedMovies = await fetchMovies();
+                setMovies(fetchedMovies);
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            } finally {
+                setLoader(false);
+            }
         };
 
         fetchData();
@@ -48,7 +55,7 @@ const MovieList: React.FC<MovieCardProps> = ({ title, fetchMovies }) => {
                     onClick={goToPrevSlide}
                 />
                 {visibleMovies.map((movie, index) => (
-                    <MovieCard key={index} movie={movie} />
+                    <MovieCard key={index} movie={movie} loader={loader} />
                 ))}
                 <MdArrowForwardIos
                     className="next_arrow"
