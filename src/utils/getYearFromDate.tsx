@@ -1,3 +1,1 @@
-export const getYearFromDate = (date: string) => {
-    return date.split('-')[0];
-};
+export const getYearFromDate = (date: string): string => date.split('-')[0];
