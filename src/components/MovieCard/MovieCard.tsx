@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { MovieType } from '../../types/moviesTypes';
 import Image from './Image';
 import Paragraph from './Paragraph';
@@ -9,7 +10,7 @@ interface MovieCardProps {
     loader: boolean;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie, loader }) => {
+const MovieCard: FC<MovieCardProps> = ({ movie, loader }) => {
     return (
         <div className="movie_card">
             <Image movie={movie} loader={loader} />

@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { MdStarRate, MdOutlineRecordVoiceOver } from 'react-icons/md';
 import { getYearFromDate } from '../../utils/getYearFromDate';
 import { MovieType } from '../../types/moviesTypes';
@@ -8,7 +9,7 @@ interface ParagraphProps {
     movie: MovieType;
 }
 
-const Paragraph: React.FC<ParagraphProps> = ({ movie }) => {
+const Paragraph: FC<ParagraphProps> = ({ movie }) => {
     return (
         <div className="movie_card_container">
             <p className="movie_year">{getYearFromDate(movie.release_date)}</p>

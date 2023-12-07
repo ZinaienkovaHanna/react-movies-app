@@ -1,5 +1,6 @@
+import { FC } from 'react';
 import { getPopularMovies, getTopRatedMovies } from '../../services/moviesAPI';
-import MovieList from '../MovieList/MovieList';
+import MovieList from '../MovieList';
 import { MovieType } from '../../types/moviesTypes';
 
 interface SectionType {
@@ -8,7 +9,7 @@ interface SectionType {
     dataHandler: () => Promise<MovieType[]>;
 }
 
-const Sections: React.FC = () => {
+const Sections: FC = () => {
     const SECTIONS: SectionType[] = [
         {
             id: 1,

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../MovieCard';
 import { MovieType } from '../../types/moviesTypes';
 
 import './MovieList.css';
@@ -10,7 +10,7 @@ interface MovieCardProps {
     fetchMovies: () => Promise<MovieType[]>;
 }
 
-const MovieList: React.FC<MovieCardProps> = ({ title, fetchMovies }) => {
+const MovieList: FC<MovieCardProps> = ({ title, fetchMovies }) => {
     const [movies, setMovies] = useState<MovieType[]>([]);
     const [loader, setLoader] = useState<boolean>(true);
     const [startIndex, setStartIndex] = useState(0);

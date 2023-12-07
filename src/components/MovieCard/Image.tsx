@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { MovieType } from '../../types/moviesTypes';
 import placeholderImage from './images/placeholderImage.png';
 import './Image.css';
@@ -7,7 +8,7 @@ interface ImageProps {
     loader: boolean;
 }
 
-const Image: React.FC<ImageProps> = ({ movie, loader }) => {
+const Image: FC<ImageProps> = ({ movie, loader }) => {
     return (
         <img
             src={loader ? placeholderImage : movie.poster_path}
