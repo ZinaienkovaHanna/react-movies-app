@@ -1,13 +1,7 @@
-import TopRatedMovieCardList from '../components/TopRatedMovieCardList/TopRatedMovieCardList';
-import PopularMovieCardList from '../components/PopularMovieCardList/PopularMovieCardList';
+import Sections from '../components/Sections/Sections';
 
 function App() {
-    return (
-        <div>
-            <TopRatedMovieCardList />
-            <PopularMovieCardList />
-        </div>
-    );
+    return <Sections />;
 }
 
 export default App;
