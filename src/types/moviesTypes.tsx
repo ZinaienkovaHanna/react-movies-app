@@ -11,8 +11,3 @@ export interface MovieType {
 export interface MovieCardProps {
     movie: MovieType;
 }
-
-export interface MovieCardListProps {
-    title: string;
-    fetchMovies: () => Promise<MovieType[]>;
-}

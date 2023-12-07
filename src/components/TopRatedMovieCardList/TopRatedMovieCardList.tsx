@@ -1,8 +1,8 @@
-import MovieCardList from '../MovieCardList/MovieCardList';
+import MovieList from '../MovieList/MovieList';
 import { getTopRatedMovies } from '../../services/moviesAPI';
 
 const TopRatedMovieCardList: React.FC = () => {
-    return <MovieCardList title="Top Rated" fetchMovies={getTopRatedMovies} />;
+    return <MovieList title="Top Rated" fetchMovies={getTopRatedMovies} />;
 };
 
 export default TopRatedMovieCardList;

@@ -1,8 +1,8 @@
-import MovieCardList from '../MovieCardList/MovieCardList';
+import MovieList from '../MovieList/MovieList';
 import { getPopularMovies } from '../../services/moviesAPI';
 
 const PopularMovieCardList: React.FC = () => {
-    return <MovieCardList title="Popular" fetchMovies={getPopularMovies} />;
+    return <MovieList title="Popular" fetchMovies={getPopularMovies} />;
 };
 
 export default PopularMovieCardList;

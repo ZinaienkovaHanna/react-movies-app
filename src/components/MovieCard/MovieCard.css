@@ -1,5 +1,6 @@
 .movie_card {
     width: 180px;
+    height: 400px;
 }
 
 .movie_card_flex {
@@ -12,10 +13,12 @@
     padding-right: 12px;
     font-size: 12px;
     font-weight: 300;
+    color: var(--textColor);
 }
 
 .movie_card_img {
     width: 180px;
+    height: 270px;
     border-radius: 8px;
 }
 
@@ -23,16 +26,19 @@
     margin-top: 0px;
     font-size: 16px;
     font-weight: 500;
+    color: var(--textColor);
 }
 
 .movie_rating_icon {
     padding-right: 2px;
     padding-top: 12px;
     font-size: 14px;
+    color: var(--iconColor);
 }
 
 .movie_votes_icon {
     padding-right: 4px;
     padding-top: 12px;
     font-size: 14px;
+    color: var(--iconColor);
 }
