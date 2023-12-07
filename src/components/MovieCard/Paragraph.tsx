@@ -12,11 +12,11 @@ interface ParagraphProps {
 const Paragraph: FC<ParagraphProps> = ({ movie }) => {
     return (
         <div className="movie_card_container">
-            <p className="movie_year">{getYearFromDate(movie.release_date)}</p>
+            <p className="movie_year">{getYearFromDate(movie.releaseDate)}</p>
             <MdStarRate className="movie_rating_icon" />
-            <p className="movie_rating">{movie.vote_average}</p>
+            <p className="movie_rating">{movie.voteAverage}</p>
             <MdOutlineRecordVoiceOver className="movie_votes_icon" />
-            <p className="movie_votes">{movie.vote_count}</p>
+            <p className="movie_votes">{movie.voteCount}</p>
         </div>
     );
 };

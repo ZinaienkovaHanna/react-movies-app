@@ -1,74 +1,45 @@
-import axios from 'axios';
-import { MovieType } from '../types/moviesTypes';
+import { MovieType, MovieTypeApiName } from '../types/moviesTypes';
 import * as token from './TOKEN.json';
 
 const { ACCESS_TOKEN } = token;
 const BASE_URL = 'http://api.themoviedb.org';
 const BASE_URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-const instance = axios.create({
-    baseURL: BASE_URL,
-    headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-});
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+    },
+};
 
-const getTopRatedMovies = async (): Promise<MovieType[]> => {
+const fetchMovies = async (ENDPOINT: string): Promise<MovieType[]> => {
     try {
-        const response = await instance.get('/3/discover/movie');
-        const movies: MovieType[] = response.data.results.map(
-            (movie: MovieType) => ({
-                id: movie.id,
-                title: movie.title,
-                release_date: movie.release_date,
-                vote_average: movie.vote_average,
-                vote_count: movie.vote_count,
-                backdrop_path: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
-                poster_path: `${BASE_URL_IMAGE}${movie.poster_path}`,
-            })
-        );
-        return movies;
+        const response = await fetch(`${BASE_URL}${ENDPOINT}`, options);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        return data.results.map((movie: MovieTypeApiName) => ({
+            id: movie.id,
+            title: movie.title,
+            releaseDate: movie.release_date,
+            voteAverage: movie.vote_average,
+            voteCount: movie.vote_count,
+            posterPath: `${BASE_URL_IMAGE}${movie.poster_path}`,
+        }));
     } catch (error) {
-        throw new Error('Error getting top rated movies');
+        throw new Error('Error getting movies');
     }
 };
 
-const getPopularMovies = async (): Promise<MovieType[]> => {
-    try {
-        const response = await instance.get('/3/movie/popular');
-        const movies: MovieType[] = response.data.results.map(
-            (movie: MovieType) => ({
-                id: movie.id,
-                title: movie.title,
-                release_date: movie.release_date,
-                vote_average: movie.vote_average,
-                vote_count: movie.vote_count,
-                backdrop_path: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
-                poster_path: `${BASE_URL_IMAGE}${movie.poster_path}`,
-            })
-        );
-        return movies;
-    } catch (error) {
-        throw new Error('Error getting popular movies');
-    }
+export const getTopRatedMovies = () => {
+    return fetchMovies('/3/movie/top_rated');
 };
 
-const getMoviesWithFilters = async (): Promise<MovieType[]> => {
-    try {
-        const response = await instance.get('/3/discover/movie');
-        const movies: MovieType[] = response.data.results.map(
-            (movie: MovieType) => ({
-                id: movie.id,
-                title: movie.title,
-                release_date: movie.release_date,
-                vote_average: movie.vote_average,
-                vote_count: movie.vote_count,
-                backdrop_path: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
-                poster_path: `${BASE_URL_IMAGE}${movie.poster_path}`,
-            })
-        );
-        return movies;
-    } catch (error) {
-        throw new Error('Error getting movies with filters');
-    }
+export const getPopularMovies = () => {
+    return fetchMovies('/3/movie/popular');
 };
-
-export { getMoviesWithFilters, getTopRatedMovies, getPopularMovies };
