@@ -23,7 +23,8 @@
 .prev_arrow,
 .next_arrow {
     color: var(--arrowColor);
-    font-size: var(--fontSizeExtraLarge);
+    background-color: var(--backgroundButtonColor);
+    border: none;
     cursor: pointer;
     opacity: 0.25;
 }

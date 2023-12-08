@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { MovieType } from '../../types/moviesTypes';
 import placeholderImage from './images/placeholderImage.png';
+
 import './Image.css';
 
 interface ImageProps {

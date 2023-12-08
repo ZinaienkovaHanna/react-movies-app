@@ -6,19 +6,18 @@
     --backgroundColor: #10141e;
     --iconColor: #fff;
     --backgroundMenuColor: #161d2f;
+    --backgroundButtonColor: #10141e;
     --arrowColor: #5a698f;
 
     /* ### Spacing */
     --spacingBase: 4px;
     --spacingSmall: 8px;
     --spacingLarge: 12px;
-    --spacingExtraLarge: 36px;
 
     /* ### Font-size */
     --fontSizeBase: 12px;
     --fontSizeSmall: 16px;
     --fontSizeLarge: 24px;
-    --fontSizeExtraLarge: 36px;
 
     /* ### Font-weight */
     --fontWeightLight: 300;
@@ -29,7 +28,7 @@
 
     /* ### Width */
     --widthContainer: 1200px;
-    --widthArrowSlider: 33.96px;
+    --widthArrowSlider: 60px;
 }
 
 body {

@@ -7,17 +7,18 @@ import {
     cloneElement,
     ReactElement,
 } from 'react';
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import Icon from '@mdi/react';
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 
 import './Slider.css';
 
-interface CarouselProps {
+interface SliderProps {
     children: ReactNode;
 }
 
 const CARDS_WIDTH = 1200;
 
-const Carousel: FC<CarouselProps> = ({ children }) => {
+const Slider: FC<SliderProps> = ({ children }) => {
     const [cards, setCards] = useState<React.ReactNode[]>([]);
     const [offset, setOffset] = useState(0);
 
@@ -56,7 +57,10 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
 
     return (
         <div className="carousel_container">
-            <MdArrowBackIos className="prev_arrow" onClick={goToPrevSlides} />
+            <button className="prev_arrow" onClick={goToPrevSlides}>
+                <Icon path={mdiChevronLeft} size={2} />
+            </button>
+
             <div className="window">
                 <div
                     className="movies_list_container"
@@ -67,12 +71,12 @@ const Carousel: FC<CarouselProps> = ({ children }) => {
                     {children}
                 </div>
             </div>
-            <MdArrowForwardIos
-                className="next_arrow"
-                onClick={goToNextSlides}
-            />
+
+            <button className="next_arrow" onClick={goToNextSlides}>
+                <Icon path={mdiChevronRight} size={2} />
+            </button>
         </div>
     );
 };
 
-export default Carousel;
+export default Slider;

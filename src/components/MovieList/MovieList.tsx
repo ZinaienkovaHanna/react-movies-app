@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from 'react';
+import { MovieType } from '../../types/moviesTypes';
 import MovieCard from '../MovieCard';
 import Slider from '../Slider';
-import { MovieType } from '../../types/moviesTypes';
 
 import './MovieList.css';
 
