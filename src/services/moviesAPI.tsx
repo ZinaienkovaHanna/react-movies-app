@@ -30,6 +30,7 @@ const fetchMovies = async (ENDPOINT: string): Promise<MovieType[]> => {
             voteAverage: movie.vote_average,
             voteCount: movie.vote_count,
             posterPath: `${BASE_URL_IMAGE}${movie.poster_path}`,
+            backdropPath: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
         }));
     } catch (error) {
         throw new Error('Error getting movies');

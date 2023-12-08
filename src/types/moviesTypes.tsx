@@ -5,6 +5,7 @@ export interface MovieType {
     voteAverage: number;
     voteCount: number;
     posterPath: string;
+    backdropPath: string;
 }
 
 export interface MovieTypeApiName {
@@ -14,4 +15,5 @@ export interface MovieTypeApiName {
     vote_average: number;
     poster_path: string;
     vote_count: number;
+    backdrop_path: string;
 }

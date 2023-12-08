@@ -1,0 +1,36 @@
+.carousel_container {
+    width: 1267.92px;
+
+    display: flex;
+    align-items: center;
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.movies_list_container {
+    height: 100%;
+    display: flex;
+    gap: 12px;
+
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.prev_arrow,
+.next_arrow {
+    color: var(--arrowColor);
+    cursor: pointer;
+    font-size: 36px;
+    opacity: 0.25;
+}
+
+.prev_arrow:hover,
+.next_arrow:hover {
+    opacity: 1;
+}

@@ -1,42 +1,8 @@
 .movie_container {
-    max-width: 1200px;
-    margin: 24px auto;
+    width: 1200px;
+    margin: auto;
 }
 
 .section_title {
-    font-size: 24px;
     color: var(--textColor);
-}
-
-.slider {
-    position: relative;
-    display: flex;
-}
-
-.slider > * {
-    margin-right: 12px;
-}
-
-.prev_arrow,
-.next_arrow {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    color: var(--arrowColor);
-    opacity: 0.25;
-    cursor: pointer;
-    top: 33%;
-}
-
-.prev_arrow:hover,
-.next_arrow:hover {
-    opacity: 1;
-}
-
-.prev_arrow {
-    left: -64px;
-}
-
-.next_arrow {
-    right: 0;
 }

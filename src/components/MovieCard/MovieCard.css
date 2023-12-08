@@ -1,12 +1,5 @@
 .movie_card {
-    width: 180px;
-    height: 400px;
-}
-
-.movie_card_img {
-    width: 180px;
-    height: 270px;
-    border-radius: 8px;
+    user-select: none;
 }
 
 .movie_card_title {

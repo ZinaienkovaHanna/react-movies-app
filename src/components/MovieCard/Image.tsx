@@ -11,7 +11,7 @@ interface ImageProps {
 const Image: FC<ImageProps> = ({ movie, loader }) => {
     return (
         <img
-            src={loader ? placeholderImage : movie.posterPath}
+            src={loader ? placeholderImage : movie.backdropPath}
             alt={movie.title}
             className="movie_card_img"
         />
