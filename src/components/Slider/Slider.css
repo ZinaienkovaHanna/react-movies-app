@@ -1,6 +1,5 @@
 .carousel_container {
-    width: 1267.92px;
-
+    width: calc(var(--widthContainer) + 2 * var(--widthArrowSlider));
     display: flex;
     align-items: center;
 }
@@ -14,8 +13,7 @@
 .movies_list_container {
     height: 100%;
     display: flex;
-    gap: 12px;
-
+    gap: var(--spacingLarge);
     transition: translate;
     transition-property: transform;
     transition-duration: 300ms;
@@ -25,8 +23,8 @@
 .prev_arrow,
 .next_arrow {
     color: var(--arrowColor);
+    font-size: var(--fontSizeExtraLarge);
     cursor: pointer;
-    font-size: 36px;
     opacity: 0.25;
 }
 

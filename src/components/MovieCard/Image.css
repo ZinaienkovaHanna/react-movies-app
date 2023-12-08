@@ -1,4 +1,4 @@
 .movie_card_img {
-    width: 228px;
-    border-radius: 8px;
+    width: calc((var(--widthContainer) - 5 * var(--spacingLarge)) / 5);
+    border-radius: var(--borderRadius);
 }

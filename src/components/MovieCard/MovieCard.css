@@ -3,8 +3,8 @@
 }
 
 .movie_card_title {
-    margin-top: 0px;
-    font-size: 16px;
-    font-weight: 500;
+    margin-top: 0;
+    font-size: var(--fontSizeSmall);
+    font-weight: var(--fontWeightMedium);
     color: var(--textColor);
 }

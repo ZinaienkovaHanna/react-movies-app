@@ -5,16 +5,16 @@
 .movie_year,
 .movie_rating,
 .movie_votes {
-    padding-right: 12px;
-    font-size: 12px;
-    font-weight: 300;
+    padding-right: var(--spacingLarge);
+    font-size: var(--fontSizeBase);
+    font-weight: var(--fontWeightLight);
     color: var(--textColor);
 }
 
 .movie_rating_icon,
 .movie_votes_icon {
-    padding-right: 4px;
-    padding-top: 12px;
-    font-size: 14px;
+    padding-right: var(--spacingBase);
+    padding-top: var(--spacingLarge);
+    font-size: var(--fontSizeBase);
     color: var(--iconColor);
 }
