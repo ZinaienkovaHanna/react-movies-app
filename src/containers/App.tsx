@@ -1,8 +1,22 @@
 import { FC } from 'react';
-import Sections from '../components/Sections';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home, Movies, TvSeries, Search, NotFound } from '../pages';
+import { MainLayout } from '../layouts';
 
 const App: FC = () => {
-    return <Sections />;
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path="movies" element={<Movies />} />
+                    <Route path="tvseries" element={<TvSeries />} />
+                    <Route path="search" element={<Search />} />
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default App;
