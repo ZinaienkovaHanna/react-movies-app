@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { MovieType } from '../../types/moviesTypes';
+import { Link } from 'react-router-dom';
+import { MovieType } from '../../types';
 import Image from './Image';
 import Paragraph from './Paragraph';
 
@@ -12,11 +13,11 @@ interface MovieCardProps {
 
 const MovieCard: FC<MovieCardProps> = ({ movie, loader }) => {
     return (
-        <div className="movie_card">
+        <Link to={`/${movie.id}`} className="movie_card">
             <Image movie={movie} loader={loader} />
             <Paragraph movie={movie} />
             <h4 className="movie_card_title">{movie.title}</h4>
-        </div>
+        </Link>
     );
 };
 

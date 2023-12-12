@@ -1,5 +1,7 @@
 .movie_card {
     user-select: none;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .movie_card_title {
@@ -7,4 +9,8 @@
     font-size: var(--fontSizeSmall);
     font-weight: var(--fontWeightMedium);
     color: var(--textColor);
+}
+
+.movie_card_title:hover {
+    opacity: 0.5;
 }

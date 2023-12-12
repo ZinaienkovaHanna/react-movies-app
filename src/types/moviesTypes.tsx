@@ -1,3 +1,8 @@
+interface GenreType {
+    id: number;
+    name: string;
+}
+
 export interface MovieType {
     id: number;
     title: string;
@@ -6,6 +11,10 @@ export interface MovieType {
     voteCount: number;
     posterPath: string;
     backdropPath: string;
+    overview: string;
+    runtime: number;
+    tagline: string;
+    genres: GenreType[];
 }
 
 export interface MovieTypeApiName {
@@ -16,4 +25,8 @@ export interface MovieTypeApiName {
     poster_path: string;
     vote_count: number;
     backdrop_path: string;
+    overview: string;
+    runtime: number;
+    tagline: string;
+    genres: GenreType[];
 }

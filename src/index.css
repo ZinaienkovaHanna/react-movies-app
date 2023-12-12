@@ -21,6 +21,7 @@
     --fontSizeBase: 12px;
     --fontSizeSmall: 16px;
     --fontSizeLarge: 24px;
+    --fontSizeExtraLarge: 36px;
 
     /* ### Font-weight */
     --fontWeightLight: 300;
@@ -33,6 +34,7 @@
     --widthContainer: 1200px;
     --widthArrowSlider: 60px;
     --widthMenu: 600px;
+    --widthImagePage: 300px;
 
     /* ### Height */
     --heightMenu: 60px;

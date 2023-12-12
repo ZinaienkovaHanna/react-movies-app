@@ -1,4 +1,4 @@
-import { MovieType, MovieTypeApiName } from '../types/moviesTypes';
+import { MovieType, MovieTypeApiName } from '../types';
 import * as token from './TOKEN.json';
 
 const { ACCESS_TOKEN } = token;
@@ -13,9 +13,25 @@ const options = {
     },
 };
 
-const fetchMovies = async (ENDPOINT: string): Promise<MovieType[]> => {
+const movieData = (movie: MovieTypeApiName): MovieType => {
+    return {
+        id: movie.id,
+        title: movie.title,
+        releaseDate: movie.release_date,
+        voteAverage: movie.vote_average,
+        voteCount: movie.vote_count,
+        posterPath: `${BASE_URL_IMAGE}${movie.poster_path}`,
+        backdropPath: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
+        genres: movie.genres,
+        overview: movie.overview,
+        runtime: movie.runtime,
+        tagline: movie.tagline,
+    };
+};
+
+const getData = async (URL: string) => {
     try {
-        const response = await fetch(`${BASE_URL}${ENDPOINT}`, options);
+        const response = await fetch(`${BASE_URL}${URL}`, options);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -23,24 +39,36 @@ const fetchMovies = async (ENDPOINT: string): Promise<MovieType[]> => {
 
         const data = await response.json();
 
-        return data.results.map((movie: MovieTypeApiName) => ({
-            id: movie.id,
-            title: movie.title,
-            releaseDate: movie.release_date,
-            voteAverage: movie.vote_average,
-            voteCount: movie.vote_count,
-            posterPath: `${BASE_URL_IMAGE}${movie.poster_path}`,
-            backdropPath: `${BASE_URL_IMAGE}${movie.backdrop_path}`,
-        }));
+        return data;
     } catch (error) {
-        throw new Error('Error getting movies');
+        throw new Error('Error getting data');
     }
 };
 
-export const getTopRatedMovies = () => {
-    return fetchMovies('/3/movie/top_rated');
+export const getTopRatedMovies = async () => {
+    try {
+        const data = await getData('/3/movie/top_rated');
+        return data.results.map(movieData);
+    } catch (error) {
+        throw new Error('Error getting top rated movies');
+    }
 };
 
-export const getPopularMovies = () => {
-    return fetchMovies('/3/movie/popular');
+export const getPopularMovies = async () => {
+    try {
+        const data = await getData('/3/movie/popular');
+        return data.results.map(movieData);
+    } catch (error) {
+        throw new Error('Error getting popular movies');
+    }
+};
+
+export const getMovieById = async (movieId: string) => {
+    try {
+        const data = await getData(`/3/movie/${movieId}`);
+
+        return movieData(data);
+    } catch (error) {
+        throw new Error('Error getting movie');
+    }
 };

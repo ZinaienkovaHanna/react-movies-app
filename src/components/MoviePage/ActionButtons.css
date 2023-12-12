@@ -1,0 +1,13 @@
+.actions_button_container {
+    display: flex;
+    align-items: center;
+    font-size: var(--fontSizeSmall);
+    gap: var(--spacingBase);
+}
+
+.votes,
+.like,
+.dislike,
+.bookmark {
+    padding-left: var(--spacingLarge);
+}

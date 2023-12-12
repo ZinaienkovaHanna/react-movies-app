@@ -1,5 +1,5 @@
 import { useState, useEffect, FC } from 'react';
-import { MovieType } from '../../types/moviesTypes';
+import { MovieType } from '../../types';
 import MovieCard from '../MovieCard';
 import Slider from '../Slider';
 

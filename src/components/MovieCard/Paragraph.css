@@ -1,5 +1,6 @@
-.movie_card_container {
+.paragraph_container {
     display: flex;
+    align-items: center;
 }
 
 .movie_year,
@@ -16,6 +17,5 @@
 .movie_votes_icon,
 .movie_name_icon {
     padding-right: var(--spacingBase);
-    padding-top: var(--spacingLarge);
     color: var(--iconColor);
 }

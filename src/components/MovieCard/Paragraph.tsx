@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Icon from '@mdi/react';
 import { mdiAccountVoice, mdiStar, mdiFilmstrip } from '@mdi/js';
-import { getYearFromDate } from '../../utils/getYearFromDate';
-import { MovieType } from '../../types/moviesTypes';
+import { getYearFromDate } from '../../utils';
+import { MovieType } from '../../types';
 
 import './Paragraph.css';
 
@@ -12,7 +12,7 @@ interface ParagraphProps {
 
 const Paragraph: FC<ParagraphProps> = ({ movie }) => {
     return (
-        <div className="movie_card_container">
+        <div className="paragraph_container">
             <p className="movie_year">{getYearFromDate(movie.releaseDate)}</p>
             <Icon path={mdiStar} size={0.55} className="movie_rating_icon" />
             <p className="movie_rating">{movie.voteAverage.toFixed(1)}</p>

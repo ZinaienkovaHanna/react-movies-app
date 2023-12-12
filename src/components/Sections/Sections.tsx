@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { getPopularMovies, getTopRatedMovies } from '../../services/moviesAPI';
-import { MovieType } from '../../types/moviesTypes';
+import { getPopularMovies, getTopRatedMovies } from '../../services';
+import { MovieType } from '../../types';
 import MovieList from '../MovieList';
 
 interface SectionType {

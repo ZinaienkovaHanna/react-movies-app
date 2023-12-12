@@ -1,0 +1,4 @@
+.movie_page_img {
+    width: var(--widthImagePage);
+    border-radius: var(--borderRadius);
+}
