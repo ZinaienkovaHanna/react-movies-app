@@ -1,4 +1,4 @@
-import { MovieType, MovieTypeApiName } from '../types';
+import { MovieType, MovieTypeApiName } from '../types/moviesTypes';
 import * as token from './TOKEN.json';
 
 const { ACCESS_TOKEN } = token;
@@ -13,7 +13,7 @@ const options = {
     },
 };
 
-const movieData = (movie: MovieTypeApiName): MovieType => {
+const serializeMovie = (movie: MovieTypeApiName): MovieType => {
     return {
         id: movie.id,
         title: movie.title,
@@ -29,9 +29,9 @@ const movieData = (movie: MovieTypeApiName): MovieType => {
     };
 };
 
-const getData = async (URL: string) => {
+const getData = async (path: string) => {
     try {
-        const response = await fetch(`${BASE_URL}${URL}`, options);
+        const response = await fetch(`${BASE_URL}${path}`, options);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -48,7 +48,7 @@ const getData = async (URL: string) => {
 export const getTopRatedMovies = async () => {
     try {
         const data = await getData('/3/movie/top_rated');
-        return data.results.map(movieData);
+        return data.results.map(serializeMovie);
     } catch (error) {
         throw new Error('Error getting top rated movies');
     }
@@ -57,7 +57,7 @@ export const getTopRatedMovies = async () => {
 export const getPopularMovies = async () => {
     try {
         const data = await getData('/3/movie/popular');
-        return data.results.map(movieData);
+        return data.results.map(serializeMovie);
     } catch (error) {
         throw new Error('Error getting popular movies');
     }
@@ -67,7 +67,7 @@ export const getMovieById = async (movieId: string) => {
     try {
         const data = await getData(`/3/movie/${movieId}`);
 
-        return movieData(data);
+        return serializeMovie(data);
     } catch (error) {
         throw new Error('Error getting movie');
     }

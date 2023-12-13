@@ -11,12 +11,11 @@
 
 .movie_card_title {
     margin-top: 0;
-    font-size: var(--fontSizeSmall);
+    font-size: var(--fontSizeBase);
     font-weight: var(--fontWeightMedium);
     color: var(--textColor);
-    opacity: 0.75;
 }
 
 .movie_card_title:hover {
-    opacity: 0.25;
+    opacity: 0.5;
 }

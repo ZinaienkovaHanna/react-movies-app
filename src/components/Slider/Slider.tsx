@@ -20,17 +20,17 @@ const CARDS_WIDTH = 1200;
 
 const Slider: FC<SliderProps> = ({ children }) => {
     const [cards, setCards] = useState<React.ReactNode[]>([]);
-    const [offset, setOffset] = useState(0);
+    const [pxOffset, setPxOffset] = useState(0);
 
     const goToPrevSlides = () => {
-        setOffset((currentOffset) => {
+        setPxOffset((currentOffset) => {
             const newOffset = currentOffset + CARDS_WIDTH;
             return Math.min(newOffset, 0);
         });
     };
 
     const goToNextSlides = () => {
-        setOffset((currentOffset) => {
+        setPxOffset((currentOffset) => {
             const newOffset = currentOffset - CARDS_WIDTH;
             const maxOffset = -(CARDS_WIDTH * (cards.length / 5 - 1));
             return Math.max(newOffset, maxOffset);
@@ -65,7 +65,7 @@ const Slider: FC<SliderProps> = ({ children }) => {
                 <div
                     className="movies_list_container"
                     style={{
-                        transform: `translateX(${offset}px)`,
+                        transform: `translateX(${pxOffset}px)`,
                     }}
                 >
                     {children}

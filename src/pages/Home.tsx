@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Sections from '../components/Sections';
+import Sections from '../containers/Sections';
 
 const Home: FC = () => {
     return <Sections />;

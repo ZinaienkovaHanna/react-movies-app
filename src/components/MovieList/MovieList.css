@@ -5,5 +5,5 @@
 
 .section_title {
     color: var(--textColor);
-    padding-left: calc(5 * var(--spacingLarge));
+    padding-left: var(--spacingExtraLarge);
 }

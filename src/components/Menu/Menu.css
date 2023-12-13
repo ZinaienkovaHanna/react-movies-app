@@ -16,7 +16,7 @@
     margin: var(--spacingLarge);
     color: var(--textMenuColor);
     text-decoration: none;
-    font-size: var(--fontSizeSmall);
+    font-size: var(--fontSizeBase);
 }
 
 .menu_link:hover {

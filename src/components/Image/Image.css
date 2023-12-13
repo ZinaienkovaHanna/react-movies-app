@@ -1,4 +1,12 @@
-.movie_card_img {
-    width: var(--movieCardImgWidth);
+.image {
     border-radius: var(--borderRadius);
+    user-select: none;
+}
+
+.movie_card_img {
+    width: var(--movieCardImageWidth);
+}
+
+.movie_page_img {
+    width: var(--imagePageWidth);
 }

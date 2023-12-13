@@ -4,10 +4,11 @@ import './Paragraph.css';
 
 interface ParagraphProps {
     text: string | number;
+    className?: string;
 }
 
-const Paragraph: FC<ParagraphProps> = ({ text }) => {
-    return <p className="movie_text">{text}</p>;
+const Paragraph: FC<ParagraphProps> = ({ text, className }) => {
+    return <p className={`paragraph ${className}`}>{text}</p>;
 };
 
 export default Paragraph;

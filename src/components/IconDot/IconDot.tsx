@@ -1,15 +1,11 @@
 import { FC } from 'react';
 import Icon from '@mdi/react';
+import { mdiCircleSmall } from '@mdi/js';
 
 import './IconDot.css';
 
-interface DotProps {
-    path: string;
-    size: number;
-}
-
-const IconDot: FC<DotProps> = ({ path, size }) => {
-    return <Icon path={path} size={size} className="dot" />;
+const IconDot: FC = () => {
+    return <Icon path={mdiCircleSmall} size={0.75} className="dot" />;
 };
 
 export default IconDot;

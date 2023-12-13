@@ -4,20 +4,24 @@ import './Image.css';
 
 interface ImageProps {
     image: string;
-    title: string;
+    alt: string;
+    className: string;
 }
 
-const Image: FC<ImageProps> = ({ image, title }) => {
+const Image: FC<ImageProps> = ({ image, alt, className }) => {
     const [imgSrc, setImgSrc] = useState<string>(image);
 
     const handleError = () => setImgSrc('/static/images/placeholderImage.png');
 
+    const handleLoad = () => setImgSrc(image);
+
     return (
         <img
             src={imgSrc}
-            alt={title}
-            className="movie_card_img"
+            alt={alt}
+            className={`image ${className}`}
             onError={handleError}
+            onLoad={handleLoad}
         />
     );
 };

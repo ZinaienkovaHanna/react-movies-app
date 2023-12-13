@@ -1,10 +1,13 @@
 import { FC, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { mdiStar, mdiAccountVoice } from '@mdi/js';
 import { getMovieById } from '../../services';
-import Image from './Image';
-import Subtitle from './Subtitle';
-import ActionButtons from './ActionButtons';
-import { MovieType } from '../../types';
+import Image from '../Image';
+import MovieInfo from '../MovieInfo';
+import Paragraph from '../Paragraph';
+import Label from '../Label';
+import ButtonBar from '../ButtonBar';
+import { MovieType } from '../../types/moviesTypes';
 
 import './MoviePage.css';
 
@@ -25,7 +28,6 @@ const MoviePage: FC = () => {
 
     const { id } = useParams<{ id: string }>();
     const [movie, setMovie] = useState<MovieType>(defaultMovie);
-    const [loader, setLoader] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchMovieById = async () => {
@@ -36,8 +38,6 @@ const MoviePage: FC = () => {
                 }
             } catch (error) {
                 console.error('Error fetching movie:', error);
-            } finally {
-                setLoader(false);
             }
         };
 
@@ -46,13 +46,36 @@ const MoviePage: FC = () => {
 
     return (
         <div className="movie_page_container">
-            <Image movie={movie} loader={loader} />
+            <Image
+                image={movie.posterPath}
+                alt={movie.title}
+                className={'movie_page_img'}
+            />
             <div>
-                <h1 className="movie_page_title">{movie.title}</h1>
-                <Subtitle movie={movie} />
-                <ActionButtons movie={movie} />
+                <h2 className="movie_page_title">{movie.title}</h2>
+                <MovieInfo
+                    releaseDate={movie.releaseDate}
+                    genres={movie.genres}
+                    runtime={movie.runtime}
+                />
+                <div className="button_container">
+                    <Label
+                        path={mdiStar}
+                        size={1}
+                        text={movie.voteAverage.toFixed(1)}
+                        className={'padding_large'}
+                    />
+                    <Label
+                        path={mdiAccountVoice}
+                        size={1}
+                        text={movie.voteCount}
+                        className={'padding_large'}
+                    />
+                    <ButtonBar />
+                </div>
+                <Paragraph text={movie.tagline} />
                 <h3 className="movie_page_title_description">Description</h3>
-                <p className="movie_page_description">{movie.overview}</p>
+                <Paragraph text={movie.overview} />
             </div>
         </div>
     );

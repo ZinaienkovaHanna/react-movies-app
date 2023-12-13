@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { getPopularMovies, getTopRatedMovies } from '../../services';
-import { MovieType } from '../../types';
-import MovieList from '../MovieList';
+import { MovieType } from '../../types/moviesTypes';
+import MovieList from '../../components/MovieList';
 
 interface SectionType {
     id: number;
@@ -12,12 +12,12 @@ interface SectionType {
 const Sections: FC = () => {
     const SECTIONS: SectionType[] = [
         {
-            id: 1,
+            id: 0,
             title: 'Popular',
             dataHandler: getPopularMovies,
         },
         {
-            id: 2,
+            id: 1,
             title: 'Top Rated',
             dataHandler: getTopRatedMovies,
         },

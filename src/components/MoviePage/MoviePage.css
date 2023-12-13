@@ -10,12 +10,16 @@
 
 .movie_page_title {
     font-size: var(--fontSizeExtraLarge);
+    margin: 0;
 }
 
 .movie_page_title_description {
     font-size: var(--fontSizeLarge);
 }
 
-.movie_page_description {
+.button_container {
+    display: flex;
+    align-items: center;
     font-size: var(--fontSizeSmall);
+    padding-bottom: var(--spacingExtraLarge);
 }
