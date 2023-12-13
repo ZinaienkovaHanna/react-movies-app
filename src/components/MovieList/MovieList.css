@@ -1,0 +1,9 @@
+.movie_container {
+    width: var(--widthContainer);
+    margin: auto;
+}
+
+.section_title {
+    color: var(--textColor);
+    padding-left: calc(5 * var(--spacingLarge));
+}
