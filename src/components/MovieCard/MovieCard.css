@@ -1,7 +1,12 @@
 .movie_card {
-    user-select: none;
+    width: var(--movieCardWidth);
     text-decoration: none;
     cursor: pointer;
+}
+
+.movie_card_info_container {
+    display: flex;
+    align-items: center;
 }
 
 .movie_card_title {
@@ -9,8 +14,9 @@
     font-size: var(--fontSizeSmall);
     font-weight: var(--fontWeightMedium);
     color: var(--textColor);
+    opacity: 0.75;
 }
 
 .movie_card_title:hover {
-    opacity: 0.5;
+    opacity: 0.25;
 }

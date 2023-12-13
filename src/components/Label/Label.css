@@ -1,0 +1,5 @@
+.icon {
+    padding-right: var(--spacingBase);
+    color: var(--iconColor);
+    opacity: 0.75;
+}

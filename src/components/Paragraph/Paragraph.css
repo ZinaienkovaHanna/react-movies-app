@@ -1,0 +1,7 @@
+.movie_text {
+    padding-right: var(--spacingBase);
+    font-size: var(--fontSizeBase);
+    font-weight: var(--fontWeightLight);
+    color: var(--textColor);
+    opacity: 0.75;
+}

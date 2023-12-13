@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { MovieType } from '../../types';
-import { convertToHoursAndMinutes } from '../../utils/';
+import { convertToHoursAndMinutes } from '../../utils/convertToHoursAndMinutes';
 
 import './Subtitle.css';
 
