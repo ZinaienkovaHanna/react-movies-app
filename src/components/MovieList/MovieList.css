@@ -1,5 +1,5 @@
 .movie_container {
-    width: var(--widthContainer);
+    width: var(--containerWidth);
     margin: auto;
 }
 

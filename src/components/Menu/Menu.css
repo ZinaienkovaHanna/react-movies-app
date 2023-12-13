@@ -1,10 +1,10 @@
 .menu_background {
     background-color: var(--backgroundMenuColor);
-    height: var(--heightMenu);
+    height: var(--menuHeight);
 }
 
 .menu_wrapper {
-    width: var(--widthContainer);
+    width: var(--containerWidth);
     margin: auto;
     display: flex;
     align-items: center;

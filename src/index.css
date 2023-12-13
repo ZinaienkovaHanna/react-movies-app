@@ -31,13 +31,15 @@
     --borderRadius: 8px;
 
     /* ### Width */
-    --widthContainer: 1200px;
-    --widthArrowSlider: 60px;
-    --widthMenu: 600px;
-    --widthImagePage: 300px;
+    --containerWidth: 1200px;
+    --arrowSliderWidth: 60px;
+    --menuWidth: 600px;
+    --imagePagewidth: 300px;
+    --movieCardImgWidth: 228px;
+    --sliderContainerWidth: 1320px;
 
     /* ### Height */
-    --heightMenu: 60px;
+    --menuHeight: 60px;
 }
 
 body {

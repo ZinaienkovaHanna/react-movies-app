@@ -1,5 +1,5 @@
-.carousel_container {
-    width: calc(var(--widthContainer) + 2 * var(--widthArrowSlider));
+.slider_container {
+    width: var(--sliderContainerWidth);
     display: flex;
     align-items: center;
 }

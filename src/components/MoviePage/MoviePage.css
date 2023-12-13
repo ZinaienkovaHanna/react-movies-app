@@ -1,5 +1,5 @@
 .movie_page_container {
-    width: var(--widthContainer);
+    width: var(--containerWidth);
     margin: var(--spacingExtraLarge) auto;
     color: var(--textColor);
     display: flex;

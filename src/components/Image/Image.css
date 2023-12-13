@@ -1,0 +1,4 @@
+.movie_card_img {
+    width: var(--movieCardImgWidth);
+    border-radius: var(--borderRadius);
+}

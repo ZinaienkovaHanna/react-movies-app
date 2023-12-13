@@ -56,7 +56,7 @@ const Slider: FC<SliderProps> = ({ children }) => {
     }, [children]);
 
     return (
-        <div className="carousel_container">
+        <div className="slider_container">
             <button className="prev_arrow" onClick={goToPrevSlides}>
                 <Icon path={mdiChevronLeft} size={2} />
             </button>

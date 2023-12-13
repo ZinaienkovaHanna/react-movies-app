@@ -12,7 +12,6 @@ interface MovieCardProps {
 
 const MovieList: FC<MovieCardProps> = ({ title, fetchMovies }) => {
     const [movies, setMovies] = useState<MovieType[]>([]);
-    const [loader, setLoader] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,8 +20,6 @@ const MovieList: FC<MovieCardProps> = ({ title, fetchMovies }) => {
                 setMovies(fetchedMovies);
             } catch (error) {
                 console.error('Error fetching movies:', error);
-            } finally {
-                setLoader(false);
             }
         };
 
@@ -34,7 +31,7 @@ const MovieList: FC<MovieCardProps> = ({ title, fetchMovies }) => {
             <h2 className="section_title">{title}</h2>
             <Slider>
                 {movies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} loader={loader} />
+                    <MovieCard key={movie.id} movie={movie} />
                 ))}
             </Slider>
         </section>
