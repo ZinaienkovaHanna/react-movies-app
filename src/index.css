@@ -5,11 +5,12 @@
     --textColor: #fff;
     --textMenuColor: #5a698f;
     --backgroundColor: #10141e;
-    --iconColor: #fff;
     --backgroundMenuColor: #161d2f;
     --backgroundButtonColor: #10141e;
-    --arrowColor: #5a698f;
+    --backgroundModalColor: #000;
+    --iconColor: #fff;
     --iconColorHover: #5a698f;
+    --arrowColor: #5a698f;
 
     /* ### Spacing */
     --spacingBase: 4px;
@@ -38,6 +39,7 @@
     --movieCardImageWidth: 228px;
     --movieCardWidth: 228px;
     --sliderContainerWidth: 1320px;
+    --modalContainerWidth: 800px;
 
     /* ### Height */
     --menuHeight: 60px;

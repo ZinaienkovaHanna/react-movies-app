@@ -9,11 +9,15 @@
     display: flex;
     align-items: center;
     height: 100%;
+    list-style-type: none;
+}
+
+.menu_li {
+    margin: var(--spacingLarge);
 }
 
 .menu_link,
 .menu_logo {
-    margin: var(--spacingLarge);
     color: var(--textMenuColor);
     text-decoration: none;
     font-size: var(--fontSizeBase);

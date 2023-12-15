@@ -1,7 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { FC } from 'react';
 import { mdiStar, mdiAccountVoice } from '@mdi/js';
-import { getMovieById } from '../../services';
 import Image from '../Image';
 import MovieInfo from '../MovieInfo';
 import Paragraph from '../Paragraph';
@@ -11,39 +9,11 @@ import { MovieType } from '../../types/moviesTypes';
 
 import './MoviePage.css';
 
-const MoviePage: FC = () => {
-    const defaultMovie = {
-        id: 0,
-        title: '',
-        releaseDate: '',
-        voteAverage: 0,
-        voteCount: 0,
-        posterPath: '',
-        backdropPath: '',
-        genres: [],
-        overview: '',
-        runtime: 0,
-        tagline: '',
-    };
+interface MoviePageProps {
+    movie: MovieType;
+}
 
-    const { id } = useParams<{ id: string }>();
-    const [movie, setMovie] = useState<MovieType>(defaultMovie);
-
-    useEffect(() => {
-        const fetchMovieById = async () => {
-            try {
-                if (id) {
-                    const fetchedMovie = await getMovieById(id);
-                    setMovie(fetchedMovie);
-                }
-            } catch (error) {
-                console.error('Error fetching movie:', error);
-            }
-        };
-
-        fetchMovieById();
-    }, []);
-
+const MoviePage: FC<MoviePageProps> = ({ movie }) => {
     return (
         <div className="movie_page_container">
             <Image
@@ -71,7 +41,7 @@ const MoviePage: FC = () => {
                         text={movie.voteCount}
                         className={'padding_large'}
                     />
-                    <ButtonBar />
+                    <ButtonBar movieId={movie.id} />
                 </div>
                 <Paragraph text={movie.tagline} />
                 <h3 className="movie_page_title_description">Description</h3>

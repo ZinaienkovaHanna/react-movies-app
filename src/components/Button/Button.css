@@ -12,3 +12,9 @@
     color: var(--iconColorHover);
     transform: scale(1.2);
 }
+
+.close {
+    margin-bottom: var(--spacingLarge);
+    background-color: var(--backgroundModalColor);
+    align-self: flex-end;
+}

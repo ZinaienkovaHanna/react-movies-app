@@ -8,22 +8,34 @@ import './Menu.css';
 const Menu: FC = () => {
     return (
         <div className="menu_background">
-            <nav className="menu_wrapper">
-                <Link to="." className="menu_logo">
-                    <Icon path={mdiMovie} size={1.5} />
-                </Link>
-                <NavLink to="." className="menu_link">
-                    Home
-                </NavLink>
-                <NavLink to="movies" className="menu_link">
-                    Movies
-                </NavLink>
-                <NavLink to="tvseries" className="menu_link">
-                    TV Series
-                </NavLink>
-                <NavLink to="search" className="menu_link">
-                    Search
-                </NavLink>
+            <nav>
+                <ul className="menu_wrapper">
+                    <li className="menu_li">
+                        <Link to="." className="menu_logo">
+                            <Icon path={mdiMovie} size={1.5} />
+                        </Link>
+                    </li>
+                    <li className="menu_li">
+                        <NavLink to="/" className="menu_link">
+                            Home
+                        </NavLink>
+                    </li>
+                    <li className="menu_li">
+                        <NavLink to="/movies" className="menu_link">
+                            Movies
+                        </NavLink>
+                    </li>
+                    <li className="menu_li">
+                        <NavLink to="/series" className="menu_link">
+                            TV Series
+                        </NavLink>
+                    </li>
+                    <li className="menu_li">
+                        <NavLink to="/search" className="menu_link">
+                            Search
+                        </NavLink>
+                    </li>
+                </ul>
             </nav>
         </div>
     );

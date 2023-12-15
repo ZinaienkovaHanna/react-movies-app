@@ -5,14 +5,6 @@ const { ACCESS_TOKEN } = token;
 const BASE_URL = 'http://api.themoviedb.org';
 const BASE_URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-    },
-};
-
 const serializeMovie = (movie: MovieTypeApiName): MovieType => {
     return {
         id: movie.id,
@@ -31,7 +23,13 @@ const serializeMovie = (movie: MovieTypeApiName): MovieType => {
 
 const getData = async (path: string) => {
     try {
-        const response = await fetch(`${BASE_URL}${path}`, options);
+        const response = await fetch(`${BASE_URL}${path}`, {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: `Bearer ${ACCESS_TOKEN}`,
+            },
+        });
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -70,5 +68,15 @@ export const getMovieById = async (movieId: string) => {
         return serializeMovie(data);
     } catch (error) {
         throw new Error('Error getting movie');
+    }
+};
+
+export const getMovieTrailerById = async (movieId: string) => {
+    try {
+        const data = await getData(`/3/movie/${movieId}/videos`);
+
+        return data.results[0].key;
+    } catch (error) {
+        throw new Error('Error getting movie trailer');
     }
 };
