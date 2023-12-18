@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { mdiStar, mdiAccountVoice } from '@mdi/js';
 import Image from '../Image';
 import MovieInfo from '../MovieInfo';
-import Paragraph from '../Paragraph';
+import P from '../P';
 import Label from '../Label';
-import ButtonBar from '../ButtonBar';
+import MovieActions from '../MovieActions';
 import { MovieType } from '../../types/moviesTypes';
 
 import './MoviePage.css';
@@ -30,22 +30,22 @@ const MoviePage: FC<MoviePageProps> = ({ movie }) => {
                 />
                 <div className="button_container">
                     <Label
-                        path={mdiStar}
-                        size={1}
-                        text={movie.voteAverage.toFixed(1)}
-                        className={'padding_large'}
+                        iconPath={mdiStar}
+                        iconSize={1}
+                        children={movie.voteAverage.toFixed(1)}
+                        textClassName={'padding_large'}
                     />
                     <Label
-                        path={mdiAccountVoice}
-                        size={1}
-                        text={movie.voteCount}
-                        className={'padding_large'}
+                        iconPath={mdiAccountVoice}
+                        iconSize={1}
+                        children={movie.voteCount}
+                        textClassName={'padding_large'}
                     />
-                    <ButtonBar movieId={movie.id} />
+                    <MovieActions movieId={movie.id} />
                 </div>
-                <Paragraph text={movie.tagline} />
+                <P children={movie.tagline} />
                 <h3 className="movie_page_title_description">Description</h3>
-                <Paragraph text={movie.overview} />
+                <P children={movie.overview} />
             </div>
         </div>
     );

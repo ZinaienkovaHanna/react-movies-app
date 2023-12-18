@@ -10,7 +10,7 @@ import {
     trailerLoader,
     Movies,
     TvSeries,
-    Search,
+    MyList,
 } from '../pages';
 
 const router = createBrowserRouter([
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/search',
-                element: <Search />,
+                element: <MyList />,
             },
         ],
     },

@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import Paragraph from '../Paragraph';
-import IconDot from '../IconDot';
+import P from '../P';
+import DotDivider from '../DotDivider';
 import { convertToHoursAndMinutes } from '../../utils/convertToHoursAndMinutes';
+import { getYearFromDate } from '../../utils/getYearFromDate';
+import { getGenreInfo } from '../../utils/getGenreInfo';
 
 import './MovieInfo.css';
 
@@ -12,15 +14,16 @@ interface MovieInfoProps {
 }
 
 const MovieInfo: FC<MovieInfoProps> = ({ releaseDate, genres, runtime }) => {
-    const genresInfo = genres.map((genre) => genre.name).join(', ');
-
     return (
         <div className="movie_info_container">
-            <Paragraph text={releaseDate} />
-            <IconDot />
-            <Paragraph text={genresInfo} />
-            <IconDot />
-            <Paragraph text={convertToHoursAndMinutes(runtime)} />
+            <P
+                children={getYearFromDate(releaseDate)}
+                textTitle={releaseDate}
+            />
+            <DotDivider />
+            <P children={getGenreInfo(genres)} />
+            <DotDivider />
+            <P children={convertToHoursAndMinutes(runtime)} />
         </div>
     );
 };

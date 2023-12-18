@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { mdiStar, mdiFilmstrip } from '@mdi/js';
 import { MovieType } from '../../types/moviesTypes';
 import Image from '../Image';
-import Paragraph from '../Paragraph';
-import IconDot from '../IconDot';
+import P from '../P';
+import DotDivider from '../DotDivider';
 import Label from '../Label';
 import { getYearFromDate } from '../../utils/getYearFromDate';
 
@@ -23,23 +23,23 @@ const MovieCard: FC<MovieCardProps> = ({ movie }) => {
                 className={'movie_card_img'}
             />
             <div className="movie_card_info_container">
-                <Paragraph
-                    text={getYearFromDate(movie.releaseDate)}
-                    className={'text_small'}
+                <P
+                    children={getYearFromDate(movie.releaseDate)}
+                    textClassName={'text_small'}
                 />
-                <IconDot />
+                <DotDivider />
                 <Label
-                    path={mdiStar}
-                    size={0.5}
-                    text={movie.voteAverage.toFixed(1)}
-                    className={'text_small'}
+                    iconPath={mdiStar}
+                    iconSize={0.5}
+                    children={movie.voteAverage.toFixed(1)}
+                    textClassName={'text_small'}
                 />
-                <IconDot />
+                <DotDivider />
                 <Label
-                    path={mdiFilmstrip}
-                    size={0.5}
-                    text={'movie'}
-                    className={'text_small'}
+                    iconPath={mdiFilmstrip}
+                    iconSize={0.5}
+                    children={'movie'}
+                    textClassName={'text_small'}
                 />
             </div>
             <h4 className="movie_card_title">{movie.title}</h4>

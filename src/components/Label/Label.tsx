@@ -1,21 +1,26 @@
 import { FC } from 'react';
 import Icon from '@mdi/react';
-import Paragraph from '../Paragraph';
+import P from '../P';
 
 import './Label.css';
 
 interface LabelProps {
-    path: string;
-    size: number;
-    text: string | number;
-    className?: string;
+    iconPath: string;
+    iconSize: number;
+    children: string | number;
+    textClassName?: string;
 }
 
-const Label: FC<LabelProps> = ({ path, size, text, className }) => {
+const Label: FC<LabelProps> = ({
+    iconPath,
+    iconSize,
+    children,
+    textClassName,
+}) => {
     return (
         <>
-            <Icon path={path} size={size} className="icon" />
-            <Paragraph text={text} className={className} />
+            <Icon path={iconPath} size={iconSize} className="icon" />
+            <P children={children} textClassName={textClassName} />
         </>
     );
 };

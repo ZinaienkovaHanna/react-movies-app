@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { mdiWindowClose } from '@mdi/js';
 import { useNavigate } from 'react-router-dom';
-import Button from '../Button';
+import IconButton from '../IconButton';
 import './MovieTrailerModal.css';
 
 interface MovieTrailerModalProps {
@@ -14,12 +14,13 @@ const MovieTrailerModal: FC<MovieTrailerModalProps> = ({ trailerKey }) => {
     const handleClick = () => {
         navigate('..', { relative: 'path' });
     };
+
     return (
         <div className="modal_container">
-            <Button
-                path={mdiWindowClose}
-                size={1}
-                className="close"
+            <IconButton
+                iconPath={mdiWindowClose}
+                iconSize={1}
+                iconClassName="close"
                 onClick={handleClick}
             />
             <iframe
