@@ -13,15 +13,12 @@ const Image: FC<ImageProps> = ({ image, alt, className }) => {
 
     const handleError = () => setImgSrc('/static/images/placeholderImage.png');
 
-    const handleLoad = () => setImgSrc(image);
-
     return (
         <img
             src={imgSrc}
             alt={alt}
             className={`image ${className}`}
             onError={handleError}
-            onLoad={handleLoad}
         />
     );
 };

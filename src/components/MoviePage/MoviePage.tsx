@@ -11,9 +11,10 @@ import './MoviePage.css';
 
 interface MoviePageProps {
     movie: MovieType;
+    mediaType: string;
 }
 
-const MoviePage: FC<MoviePageProps> = ({ movie }) => {
+const MoviePage: FC<MoviePageProps> = ({ movie, mediaType }) => {
     return (
         <div className="movie_page_container">
             <Image
@@ -27,6 +28,9 @@ const MoviePage: FC<MoviePageProps> = ({ movie }) => {
                     releaseDate={movie.releaseDate}
                     genres={movie.genres}
                     runtime={movie.runtime}
+                    episodes={movie.episodes}
+                    seasons={movie.seasons}
+                    mediaType={mediaType}
                 />
                 <div className="button_container">
                     <Label

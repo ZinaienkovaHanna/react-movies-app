@@ -8,8 +8,8 @@ const BASE_URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
 const serializeMovie = (movie: MovieTypeApiName): MovieType => {
     return {
         id: movie.id,
-        title: movie.title,
-        releaseDate: movie.release_date,
+        title: movie.title || movie.name,
+        releaseDate: movie.release_date || movie.first_air_date,
         voteAverage: movie.vote_average,
         voteCount: movie.vote_count,
         posterPath: `${BASE_URL_IMAGE}${movie.poster_path}`,
@@ -18,6 +18,8 @@ const serializeMovie = (movie: MovieTypeApiName): MovieType => {
         overview: movie.overview,
         runtime: movie.runtime,
         tagline: movie.tagline,
+        episodes: movie.number_of_episodes,
+        seasons: movie.number_of_seasons,
     };
 };
 
@@ -43,28 +45,36 @@ const getData = async (path: string) => {
     }
 };
 
-export const getTopRatedMovies = async () => {
+export const getTrendingMovies = async (timeWindow: string) => {
     try {
-        const data = await getData('/3/movie/top_rated');
+        const data = await getData(`/3/trending/movie/${timeWindow}`);
         return data.results.map(serializeMovie);
     } catch (error) {
-        throw new Error('Error getting top rated movies');
+        throw new Error('Error getting trending all');
     }
 };
 
-export const getPopularMovies = async () => {
+export const getMovies = async (path: string) => {
     try {
-        const data = await getData('/3/movie/popular');
+        const data = await getData(`/3/movie/${path}`);
         return data.results.map(serializeMovie);
     } catch (error) {
-        throw new Error('Error getting popular movies');
+        throw new Error(`Error getting ${path} movies`);
     }
 };
 
-export const getMovieById = async (movieId: string) => {
+export const getTvSeries = async (path: string) => {
     try {
-        const data = await getData(`/3/movie/${movieId}`);
+        const data = await getData(`/3/tv/${path}`);
+        return data.results.map(serializeMovie);
+    } catch (error) {
+        throw new Error(`Error getting ${path} TV series`);
+    }
+};
 
+export const getMovieById = async (mediaType: string, movieId: string) => {
+    try {
+        const data = await getData(`/3/${mediaType}/${movieId}`);
         return serializeMovie(data);
     } catch (error) {
         throw new Error('Error getting movie');

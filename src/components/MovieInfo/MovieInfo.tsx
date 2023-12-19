@@ -11,9 +11,19 @@ interface MovieInfoProps {
     releaseDate: string;
     genres: { id: number; name: string }[];
     runtime: number;
+    episodes: number;
+    seasons: number;
+    mediaType: string;
 }
 
-const MovieInfo: FC<MovieInfoProps> = ({ releaseDate, genres, runtime }) => {
+const MovieInfo: FC<MovieInfoProps> = ({
+    releaseDate,
+    genres,
+    runtime,
+    episodes,
+    seasons,
+    mediaType,
+}) => {
     return (
         <div className="movie_info_container">
             <P
@@ -23,7 +33,13 @@ const MovieInfo: FC<MovieInfoProps> = ({ releaseDate, genres, runtime }) => {
             <DotDivider />
             <P children={getGenreInfo(genres)} />
             <DotDivider />
-            <P children={convertToHoursAndMinutes(runtime)} />
+            <P
+                children={
+                    mediaType === 'movie'
+                        ? convertToHoursAndMinutes(runtime)
+                        : `${seasons} seasons, ${episodes} episodes`
+                }
+            />
         </div>
     );
 };

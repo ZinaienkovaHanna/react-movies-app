@@ -1,6 +1,5 @@
 .movie_card {
     width: var(--movieCardWidth);
-    text-decoration: none;
     cursor: pointer;
 }
 

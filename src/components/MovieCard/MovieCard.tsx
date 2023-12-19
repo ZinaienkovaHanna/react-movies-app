@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { mdiStar, mdiFilmstrip } from '@mdi/js';
+import { mdiStar, mdiFilmstrip, mdiTelevisionClassic } from '@mdi/js';
 import { MovieType } from '../../types/moviesTypes';
 import Image from '../Image';
 import P from '../P';
@@ -12,11 +11,12 @@ import './MovieCard.css';
 
 interface MovieCardProps {
     movie: MovieType;
+    mediaType: string;
 }
 
-const MovieCard: FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: FC<MovieCardProps> = ({ movie, mediaType }) => {
     return (
-        <Link to={`/${movie.id}`} className="movie_card">
+        <div className="movie_card">
             <Image
                 image={movie.backdropPath}
                 alt={movie.title}
@@ -30,20 +30,24 @@ const MovieCard: FC<MovieCardProps> = ({ movie }) => {
                 <DotDivider />
                 <Label
                     iconPath={mdiStar}
-                    iconSize={0.5}
+                    iconSize={0.6}
                     children={movie.voteAverage.toFixed(1)}
                     textClassName={'text_small'}
                 />
                 <DotDivider />
                 <Label
-                    iconPath={mdiFilmstrip}
-                    iconSize={0.5}
-                    children={'movie'}
+                    iconPath={
+                        mediaType === 'movie'
+                            ? mdiFilmstrip
+                            : mdiTelevisionClassic
+                    }
+                    iconSize={0.6}
+                    children={mediaType}
                     textClassName={'text_small'}
                 />
             </div>
             <h4 className="movie_card_title">{movie.title}</h4>
-        </Link>
+        </div>
     );
 };
 

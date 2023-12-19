@@ -18,7 +18,6 @@ const MovieActions: FC<MovieActionsProps> = ({ movieId }) => {
             <IconButton iconPath={mdiThumbUpOutline} iconSize={1} />
             <IconButton iconPath={mdiThumbDownOutline} iconSize={1} />
             <IconButton iconPath={mdiBookmarkOutline} iconSize={1} />
-
             <Link to={`/${movieId}/trailer`}>
                 <IconButton iconPath={mdiYoutube} iconSize={2} />
             </Link>

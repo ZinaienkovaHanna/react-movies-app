@@ -15,6 +15,8 @@ export interface MovieType {
     runtime: number;
     tagline: string;
     genres: GenreType[];
+    episodes: number;
+    seasons: number;
 }
 
 export interface MovieTypeApiName {
@@ -29,4 +31,15 @@ export interface MovieTypeApiName {
     runtime: number;
     tagline: string;
     genres: GenreType[];
+    first_air_date: string;
+    name: string;
+    number_of_episodes: number;
+    number_of_seasons: number;
+}
+
+export interface SectionType {
+    id: number;
+    title: string;
+    movies: MovieType[];
+    mediaType: string;
 }

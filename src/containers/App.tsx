@@ -1,17 +1,20 @@
 import { FC } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { MainLayout } from '../layouts';
-import {
-    ErrorPage,
-    Home,
-    Movie,
-    movieLoader,
-    Trailer,
-    trailerLoader,
-    Movies,
-    TvSeries,
-    MyList,
-} from '../pages';
+import ErrorPage from '../pages/ErrorPage';
+import Home from '../pages/Home';
+import Movies from '../pages/Movies';
+import TvSerieses from '../pages/TvSerieses';
+import MyList from '../pages/MyList/MyList';
+import Movie from '../pages/Movie';
+import TvSeries from '../pages/TvSeries/TvSeries';
+import Trailer from '../pages/Trailer';
+import { loader as homeLoader } from '../pages/Home/loader';
+import { loader as moviesLoader } from '../pages/Movies/loader';
+import { loader as tvSeriesesLoader } from '../pages/TvSerieses/loader';
+import { loader as movieLoader } from '../pages/Movie/loader';
+import { loader as tvSeriesLoader } from '../pages/TvSeries/loader';
+import { loader as trailerLoader } from '../pages/Trailer/loader';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +25,7 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />,
+                loader: homeLoader,
             },
             {
                 path: '/:movieId',
@@ -36,13 +40,25 @@ const router = createBrowserRouter([
             {
                 path: '/movies',
                 element: <Movies />,
+                loader: moviesLoader,
             },
             {
-                path: '/series',
+                path: '/movies/:movieId',
+                element: <Movie />,
+                loader: movieLoader,
+            },
+            {
+                path: '/tv',
+                element: <TvSerieses />,
+                loader: tvSeriesesLoader,
+            },
+            {
+                path: '/tv/:tvId',
                 element: <TvSeries />,
+                loader: tvSeriesLoader,
             },
             {
-                path: '/search',
+                path: '/list',
                 element: <MyList />,
             },
         ],

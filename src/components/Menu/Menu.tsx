@@ -11,7 +11,7 @@ const Menu: FC = () => {
             <nav>
                 <ul className="menu_wrapper">
                     <li className="menu_li">
-                        <Link to="." className="menu_logo">
+                        <Link to="/" className="menu_logo">
                             <Icon path={mdiMovie} size={1.5} />
                         </Link>
                     </li>
@@ -26,13 +26,13 @@ const Menu: FC = () => {
                         </NavLink>
                     </li>
                     <li className="menu_li">
-                        <NavLink to="/series" className="menu_link">
+                        <NavLink to="/tv" className="menu_link">
                             TV Series
                         </NavLink>
                     </li>
                     <li className="menu_li">
-                        <NavLink to="/search" className="menu_link">
-                            Search
+                        <NavLink to="/list" className="menu_link">
+                            My list
                         </NavLink>
                     </li>
                 </ul>

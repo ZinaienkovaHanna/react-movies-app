@@ -11,6 +11,8 @@
     --iconColor: #fff;
     --iconColorHover: #5a698f;
     --arrowColor: #5a698f;
+    --borderColor: #5a698f;
+    --activeButtonColor: #5a698f;
 
     /* ### Spacing */
     --spacingBase: 4px;
@@ -40,6 +42,7 @@
     --movieCardWidth: 228px;
     --sliderContainerWidth: 1320px;
     --modalContainerWidth: 800px;
+    --buttonWidth: 160px;
 
     /* ### Height */
     --menuHeight: 60px;

@@ -7,3 +7,33 @@
     color: var(--textColor);
     padding-left: var(--spacingExtraLarge);
 }
+
+.movie_card_link {
+    text-decoration: none;
+}
+
+.section_title_container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingExtraLarge);
+}
+
+.button_toggle_container {
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--borderColor);
+}
+
+.button_today,
+.button_week {
+    width: var(--buttonWidth);
+    padding: var(--spacingSmall) var(--spacingExtraLarge);
+    background-color: var(--backgroundButtonColor);
+    border: none;
+    border-radius: var(--borderRadius);
+    color: var(--textColor);
+    cursor: pointer;
+}
+
+.active_button {
+    background-color: var(--activeButtonColor);
+}
