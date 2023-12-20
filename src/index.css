@@ -3,21 +3,28 @@
 :root {
     /* ### Color */
     --textColor: #fff;
+    --textMenuColor: #5a698f;
     --backgroundColor: #10141e;
-    --iconColor: #fff;
     --backgroundMenuColor: #161d2f;
     --backgroundButtonColor: #10141e;
+    --backgroundModalColor: #000;
+    --iconColor: #fff;
+    --iconColorHover: #5a698f;
     --arrowColor: #5a698f;
+    --borderColor: #5a698f;
+    --activeButtonColor: #5a698f;
 
     /* ### Spacing */
     --spacingBase: 4px;
     --spacingSmall: 8px;
     --spacingLarge: 12px;
+    --spacingExtraLarge: 40px;
 
     /* ### Font-size */
-    --fontSizeBase: 12px;
-    --fontSizeSmall: 16px;
+    --fontSizeBase: 16px;
+    --fontSizeSmall: 12px;
     --fontSizeLarge: 24px;
+    --fontSizeExtraLarge: 36px;
 
     /* ### Font-weight */
     --fontWeightLight: 300;
@@ -27,8 +34,19 @@
     --borderRadius: 8px;
 
     /* ### Width */
-    --widthContainer: 1200px;
-    --widthArrowSlider: 60px;
+    --containerWidth: 1200px;
+    --arrowSliderWidth: 60px;
+    --menuWidth: 600px;
+    --imagePageWidth: 300px;
+    --movieCardImageWidth: 228px;
+    --movieCardWidth: 228px;
+    --sliderContainerWidth: 1320px;
+    --modalContainerWidth: 800px;
+    --buttonWidth: 114px;
+
+    /* ### Height */
+    --menuHeight: 60px;
+    --movieCardHeight: 128px;
 }
 
 body {

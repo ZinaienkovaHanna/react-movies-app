@@ -1,0 +1,24 @@
+.movie_page_container {
+    width: var(--containerWidth);
+    margin: var(--spacingExtraLarge) auto;
+    color: var(--textColor);
+    display: flex;
+    align-items: center;
+    gap: var(--spacingExtraLarge);
+}
+
+.movie_page_title {
+    font-size: var(--fontSizeExtraLarge);
+    margin: 0;
+}
+
+.movie_page_title_description {
+    font-size: var(--fontSizeLarge);
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+    font-size: var(--fontSizeSmall);
+    padding-bottom: var(--spacingExtraLarge);
+}

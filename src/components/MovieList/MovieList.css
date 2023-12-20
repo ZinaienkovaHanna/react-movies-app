@@ -1,9 +1,40 @@
 .movie_container {
-    width: var(--widthContainer);
+    width: var(--containerWidth);
     margin: auto;
 }
 
 .section_title {
     color: var(--textColor);
-    padding-left: calc(5 * var(--spacingLarge));
+    padding-left: var(--spacingExtraLarge);
+}
+
+.movie_card_link {
+    text-decoration: none;
+}
+
+.section_title_container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacingExtraLarge);
+}
+
+.button_toggle_container {
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--borderColor);
+}
+
+.button_today,
+.button_week {
+    width: var(--buttonWidth);
+    font-size: var(--fontSizeSmall);
+    padding: var(--spacingBase) var(--spacingLarge);
+    background-color: var(--backgroundButtonColor);
+    border: none;
+    border-radius: var(--borderRadius);
+    color: var(--textColor);
+    cursor: pointer;
+}
+
+.active_button {
+    background-color: var(--activeButtonColor);
 }

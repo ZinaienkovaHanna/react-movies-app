@@ -1,10 +1,20 @@
 .movie_card {
-    user-select: none;
+    width: var(--movieCardWidth);
+    cursor: pointer;
+}
+
+.movie_card_info_container {
+    display: flex;
+    align-items: center;
 }
 
 .movie_card_title {
     margin-top: 0;
-    font-size: var(--fontSizeSmall);
+    font-size: var(--fontSizeBase);
     font-weight: var(--fontWeightMedium);
     color: var(--textColor);
+}
+
+.movie_card_title:hover {
+    opacity: 0.5;
 }

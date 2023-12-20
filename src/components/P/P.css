@@ -1,0 +1,15 @@
+.paragraph {
+    padding-right: var(--spacingBase);
+    font-size: var(--fontSizeBase);
+    font-weight: var(--fontWeightLight);
+    color: var(--textColor);
+    opacity: 0.75;
+}
+
+.text_small {
+    font-size: var(--fontSizeSmall);
+}
+
+.padding_large {
+    padding-right: var(--spacingLarge);
+}

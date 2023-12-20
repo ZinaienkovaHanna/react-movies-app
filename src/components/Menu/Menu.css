@@ -1,0 +1,32 @@
+.menu_background {
+    background-color: var(--backgroundMenuColor);
+    height: var(--menuHeight);
+}
+
+.menu_wrapper {
+    width: var(--containerWidth);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    list-style-type: none;
+}
+
+.menu_li {
+    margin: var(--spacingLarge);
+}
+
+.menu_link,
+.menu_logo {
+    color: var(--textMenuColor);
+    text-decoration: none;
+    font-size: var(--fontSizeBase);
+}
+
+.menu_link:hover {
+    opacity: 0.5;
+}
+
+.active {
+    opacity: 0.5;
+}

@@ -1,0 +1,17 @@
+.modal_container {
+    position: fixed;
+    margin-top: var(--spacingLarge);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    max-width: var(--modalContainerWidth);
+    background-color: var(--backgroundModalColor);
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: calc(2 * var(--spacingLarge));
+}

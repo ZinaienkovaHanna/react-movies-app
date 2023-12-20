@@ -1,0 +1,20 @@
+.button {
+    background-color: var(--backgroundButtonColor);
+    color: var(--iconColor);
+    border: none;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover {
+    opacity: 1;
+    color: var(--iconColorHover);
+    transform: scale(1.2);
+}
+
+.close {
+    margin-bottom: var(--spacingLarge);
+    background-color: var(--backgroundModalColor);
+    align-self: flex-end;
+}

@@ -1,0 +1,13 @@
+.image {
+    border-radius: var(--borderRadius);
+    user-select: none;
+}
+
+.movie_card_img {
+    width: var(--movieCardImageWidth);
+    height: var(--movieCardHeight);
+}
+
+.movie_page_img {
+    width: var(--imagePageWidth);
+}
