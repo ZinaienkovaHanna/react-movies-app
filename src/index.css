@@ -42,10 +42,11 @@
     --movieCardWidth: 228px;
     --sliderContainerWidth: 1320px;
     --modalContainerWidth: 800px;
-    --buttonWidth: 160px;
+    --buttonWidth: 114px;
 
     /* ### Height */
     --menuHeight: 60px;
+    --movieCardHeight: 128px;
 }
 
 body {

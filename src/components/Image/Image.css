@@ -5,7 +5,7 @@
 
 .movie_card_img {
     width: var(--movieCardImageWidth);
-    height: 128px;
+    height: var(--movieCardHeight);
 }
 
 .movie_page_img {

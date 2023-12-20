@@ -26,7 +26,8 @@
 .button_today,
 .button_week {
     width: var(--buttonWidth);
-    padding: var(--spacingSmall) var(--spacingExtraLarge);
+    font-size: var(--fontSizeSmall);
+    padding: var(--spacingBase) var(--spacingLarge);
     background-color: var(--backgroundButtonColor);
     border: none;
     border-radius: var(--borderRadius);
