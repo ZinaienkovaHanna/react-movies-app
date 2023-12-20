@@ -1,12 +1,4 @@
-import {
-    FC,
-    ReactNode,
-    useState,
-    useEffect,
-    Children,
-    cloneElement,
-    ReactElement,
-} from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import Icon from '@mdi/react';
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 
@@ -16,11 +8,11 @@ interface SliderProps {
     children: ReactNode;
 }
 
-const CARDS_WIDTH = 1200;
-
 const Slider: FC<SliderProps> = ({ children }) => {
-    const [cards, setCards] = useState<React.ReactNode[]>([]);
+    const CARDS_WIDTH = 1200;
+    const MAX_SLIDES = 5;
     const [pxOffset, setPxOffset] = useState(0);
+    const childArray = React.Children.toArray(children);
 
     const goToPrevSlides = () => {
         setPxOffset((currentOffset) => {
@@ -32,28 +24,13 @@ const Slider: FC<SliderProps> = ({ children }) => {
     const goToNextSlides = () => {
         setPxOffset((currentOffset) => {
             const newOffset = currentOffset - CARDS_WIDTH;
-            const maxOffset = -(CARDS_WIDTH * (cards.length / 5 - 1));
+            const maxOffset = -(
+                CARDS_WIDTH *
+                (childArray.length / MAX_SLIDES - 1)
+            );
             return Math.max(newOffset, maxOffset);
         });
     };
-
-    useEffect(() => {
-        if (children) {
-            const modifiedChildren = Children.map(children, (child) => {
-                return cloneElement(child as ReactElement, {
-                    style: {
-                        height: '100%',
-                        minWidth: `${CARDS_WIDTH}px`,
-                        maxWidth: `${CARDS_WIDTH}px`,
-                    },
-                });
-            });
-
-            if (modifiedChildren && modifiedChildren.length > 0) {
-                setCards(modifiedChildren);
-            }
-        }
-    }, [children]);
 
     return (
         <div className="slider_container">
