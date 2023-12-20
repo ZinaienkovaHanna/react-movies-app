@@ -10,7 +10,6 @@ import Movie from '../pages/Movie';
 import TvSeries from '../pages/TvSeries';
 import TrailerMovie from '../pages/TrailerMovie';
 import TrailerTv from '../pages/TrailerTv';
-
 import {
     homeLoader,
     moviesLoader,
