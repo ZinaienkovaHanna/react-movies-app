@@ -8,10 +8,15 @@ export default function ErrorPage() {
     }
 
     return (
-        <div id="error-page">
-            <h1>Oops!</h1>
-            <p>Sorry, an unexpected error has occurred.</p>
-            <p>
+        <div
+            id="error-page"
+            style={{ width: '1200px', color: 'white', margin: 'auto' }}
+        >
+            <h1 style={{ textAlign: 'center' }}>Oops!</h1>
+            <p style={{ textAlign: 'center' }}>
+                Sorry, an unexpected error has occurred.
+            </p>
+            <p style={{ textAlign: 'center' }}>
                 <i>{error.statusText || error.message}</i>
             </p>
         </div>

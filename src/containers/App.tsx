@@ -18,6 +18,7 @@ import {
     tvSeriesesLoader,
     tvSeriesLoader,
     trailerTvLoader,
+    movieBookmakedLoader,
 } from '../pages/loader';
 
 const router = createBrowserRouter([
@@ -64,6 +65,7 @@ const router = createBrowserRouter([
             {
                 path: '/list',
                 element: <MyList />,
+                loader: movieBookmakedLoader,
             },
         ],
     },

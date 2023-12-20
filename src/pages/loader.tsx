@@ -10,8 +10,9 @@ import {
 export const homeLoader = async () => {
     const moviesDay = await getTrendingMovies('day');
     const moviesWeek = await getTrendingMovies('week');
+    const moviesTopRated = await getMovies('top_rated');
 
-    return { moviesDay, moviesWeek };
+    return { moviesDay, moviesWeek, moviesTopRated };
 };
 
 export const moviesLoader = async () => {
@@ -99,4 +100,30 @@ export const trailerTvLoader = async ({
     const trailerKeyTv = await getMovieTrailerById('tv', tvId);
 
     return { trailerKeyTv };
+};
+
+export const movieBookmakedLoader = async () => {
+    const bookmarkStatus = localStorage.getItem('bookmarked_movies');
+
+    if (bookmarkStatus !== null) {
+        const bookmarkedMoviesId = JSON.parse(bookmarkStatus);
+
+        const bookmarkedMovies = [];
+
+        for (const movieId of bookmarkedMoviesId) {
+            try {
+                const movie = await getMovieById('movie', movieId);
+                bookmarkedMovies.push(movie);
+            } catch (error) {
+                console.error(
+                    `Error fetching movie with ID ${movieId}:`,
+                    error
+                );
+            }
+        }
+
+        return { bookmarkedMovies };
+    }
+
+    return { bookmarkedMovies: [] };
 };

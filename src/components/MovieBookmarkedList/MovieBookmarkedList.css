@@ -1,0 +1,6 @@
+.movie_bookmarked_list_container {
+    width: var(--containerWidth);
+    margin: var(--spacingExtraLarge) auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}

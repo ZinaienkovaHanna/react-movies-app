@@ -7,6 +7,7 @@ import {
     mdiYoutube,
     mdiThumbUp,
     mdiThumbDown,
+    mdiBookmark,
 } from '@mdi/js';
 import IconButton from '../IconButton';
 
@@ -18,6 +19,7 @@ interface MovieActionsProps {
 const MovieActions: FC<MovieActionsProps> = ({ movieId, pathLink }) => {
     const [liked, setLiked] = useState<boolean>(false);
     const [disliked, setDisliked] = useState<boolean>(false);
+    const [bookmarked, setBookmarked] = useState<boolean>(false);
 
     useEffect(() => {
         const likedStatus = localStorage.getItem(`liked_${movieId}`);
@@ -29,6 +31,15 @@ const MovieActions: FC<MovieActionsProps> = ({ movieId, pathLink }) => {
 
         if (dislikedStatus !== null) {
             setDisliked(dislikedStatus === 'true');
+        }
+    }, [movieId]);
+
+    useEffect(() => {
+        const bookmarkStatus = localStorage.getItem('bookmarked_movies');
+
+        if (bookmarkStatus !== null) {
+            const bookmarkedMovies: number[] = JSON.parse(bookmarkStatus);
+            setBookmarked(bookmarkedMovies.includes(movieId));
         }
     }, [movieId]);
 
@@ -46,6 +57,26 @@ const MovieActions: FC<MovieActionsProps> = ({ movieId, pathLink }) => {
         localStorage.removeItem(`liked_${movieId}`);
     };
 
+    const handleBookmarkClick = () => {
+        const bookmarkStatus = localStorage.getItem('bookmarked_movies');
+        let bookmarkedMovies: number[] = bookmarkStatus
+            ? JSON.parse(bookmarkStatus)
+            : [];
+
+        if (bookmarked) {
+            bookmarkedMovies = bookmarkedMovies.filter((id) => id !== movieId);
+        } else {
+            bookmarkedMovies.push(movieId);
+        }
+
+        localStorage.setItem(
+            'bookmarked_movies',
+            JSON.stringify(bookmarkedMovies)
+        );
+
+        setBookmarked(!bookmarked);
+    };
+
     return (
         <>
             <IconButton
@@ -58,7 +89,11 @@ const MovieActions: FC<MovieActionsProps> = ({ movieId, pathLink }) => {
                 iconSize={1}
                 onClick={handleDisLikeClick}
             />
-            <IconButton iconPath={mdiBookmarkOutline} iconSize={1} />
+            <IconButton
+                iconPath={bookmarked ? mdiBookmark : mdiBookmarkOutline}
+                iconSize={1}
+                onClick={handleBookmarkClick}
+            />
             <Link to={`/${pathLink}/${movieId}/trailer`}>
                 <IconButton iconPath={mdiYoutube} iconSize={2} />
             </Link>
