@@ -81,9 +81,12 @@ export const getMovieById = async (mediaType: string, movieId: string) => {
     }
 };
 
-export const getMovieTrailerById = async (movieId: string) => {
+export const getMovieTrailerById = async (
+    mediaType: string,
+    movieId: string
+) => {
     try {
-        const data = await getData(`/3/movie/${movieId}/videos`);
+        const data = await getData(`/3/${mediaType}/${movieId}/videos`);
 
         return data.results[0].key;
     } catch (error) {

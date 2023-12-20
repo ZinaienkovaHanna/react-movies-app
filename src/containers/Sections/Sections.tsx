@@ -4,7 +4,7 @@ import MovieList from '../../components/MovieList';
 
 interface SectionProps {
     sections: SectionType[];
-    pathLink?: string;
+    pathLink: string;
 }
 
 const Sections: FC<SectionProps> = ({ sections, pathLink }) => {

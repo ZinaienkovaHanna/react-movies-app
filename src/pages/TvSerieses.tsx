@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Sections from '../../containers/Sections';
-import { SectionType, MovieType } from '../../types/moviesTypes';
+import Sections from '../containers/Sections';
+import { SectionType, MovieType } from '../types/moviesTypes';
 
 const TvSeries: FC = () => {
     const {
@@ -43,7 +43,7 @@ const TvSeries: FC = () => {
         },
     ];
 
-    return <Sections sections={sections} pathLink="/tv/" />;
+    return <Sections sections={sections} pathLink="tv" />;
 };
 
 export default TvSeries;

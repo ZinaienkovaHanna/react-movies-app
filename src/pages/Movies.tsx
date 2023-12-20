@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Sections from '../../containers/Sections';
-
-import { SectionType, MovieType } from '../../types/moviesTypes';
+import Sections from '../containers/Sections';
+import { SectionType, MovieType } from '../types/moviesTypes';
 
 const Movies: FC = () => {
     const { moviesUpcoming, moviesNowPlaying, moviesPopular, moviesTopRated } =
@@ -40,7 +39,7 @@ const Movies: FC = () => {
         },
     ];
 
-    return <Sections sections={sections} pathLink="/movies/" />;
+    return <Sections sections={sections} pathLink="movies" />;
 };
 
 export default Movies;

@@ -15,10 +15,3 @@
     align-items: center;
     padding: calc(2 * var(--spacingLarge));
 }
-
-.video {
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--backgroundModalColor);
-    box-sizing: border-box;
-}

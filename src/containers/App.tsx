@@ -5,16 +5,21 @@ import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
 import TvSerieses from '../pages/TvSerieses';
-import MyList from '../pages/MyList/MyList';
+import MyList from '../pages/MyList';
 import Movie from '../pages/Movie';
-import TvSeries from '../pages/TvSeries/TvSeries';
-import Trailer from '../pages/Trailer';
-import { loader as homeLoader } from '../pages/Home/loader';
-import { loader as moviesLoader } from '../pages/Movies/loader';
-import { loader as tvSeriesesLoader } from '../pages/TvSerieses/loader';
-import { loader as movieLoader } from '../pages/Movie/loader';
-import { loader as tvSeriesLoader } from '../pages/TvSeries/loader';
-import { loader as trailerLoader } from '../pages/Trailer/loader';
+import TvSeries from '../pages/TvSeries';
+import TrailerMovie from '../pages/TrailerMovie';
+import TrailerTv from '../pages/TrailerTv';
+
+import {
+    homeLoader,
+    moviesLoader,
+    movieLoader,
+    trailerMovieLoader,
+    tvSeriesesLoader,
+    tvSeriesLoader,
+    trailerTvLoader,
+} from '../pages/loader';
 
 const router = createBrowserRouter([
     {
@@ -28,16 +33,6 @@ const router = createBrowserRouter([
                 loader: homeLoader,
             },
             {
-                path: '/:movieId',
-                element: <Movie />,
-                loader: movieLoader,
-            },
-            {
-                path: '/:movieId/trailer',
-                element: <Trailer />,
-                loader: trailerLoader,
-            },
-            {
                 path: '/movies',
                 element: <Movies />,
                 loader: moviesLoader,
@@ -48,6 +43,11 @@ const router = createBrowserRouter([
                 loader: movieLoader,
             },
             {
+                path: '/movies/:movieId/trailer',
+                element: <TrailerMovie />,
+                loader: trailerMovieLoader,
+            },
+            {
                 path: '/tv',
                 element: <TvSerieses />,
                 loader: tvSeriesesLoader,
@@ -56,6 +56,11 @@ const router = createBrowserRouter([
                 path: '/tv/:tvId',
                 element: <TvSeries />,
                 loader: tvSeriesLoader,
+            },
+            {
+                path: '/tv/:tvId/trailer',
+                element: <TrailerTv />,
+                loader: trailerTvLoader,
             },
             {
                 path: '/list',

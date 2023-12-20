@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { mdiWindowClose } from '@mdi/js';
 import { useNavigate } from 'react-router-dom';
+import YouTube, { YouTubeProps } from 'react-youtube';
 import IconButton from '../IconButton';
 import './MovieTrailerModal.css';
 
@@ -15,6 +16,11 @@ const MovieTrailerModal: FC<MovieTrailerModalProps> = ({ trailerKey }) => {
         navigate('..', { relative: 'path' });
     };
 
+    const opts: YouTubeProps['opts'] = {
+        height: '468',
+        width: '768',
+    };
+
     return (
         <div className="modal_container">
             <IconButton
@@ -23,11 +29,7 @@ const MovieTrailerModal: FC<MovieTrailerModalProps> = ({ trailerKey }) => {
                 iconClassName="close"
                 onClick={handleClick}
             />
-            <iframe
-                src={`https://www.youtube.com/embed/${trailerKey}`}
-                title="Movie trailer"
-                className="video"
-            />
+            <YouTube videoId={trailerKey} opts={opts} />
         </div>
     );
 };

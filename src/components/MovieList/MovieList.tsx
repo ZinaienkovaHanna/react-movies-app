@@ -10,7 +10,7 @@ interface MovieCardProps {
     title: string;
     movies: MovieType[];
     mediaType: string;
-    pathLink?: string;
+    pathLink: string;
     children?: ReactNode;
 }
 
@@ -30,7 +30,7 @@ const MovieList: FC<MovieCardProps> = ({
             <Slider>
                 {movies.map((movie) => (
                     <Link
-                        to={`${pathLink}${movie.id}`}
+                        to={`/${pathLink}/${movie.id}`}
                         key={movie.id}
                         className="movie_card_link"
                     >

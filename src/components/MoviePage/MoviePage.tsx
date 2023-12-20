@@ -12,9 +12,10 @@ import './MoviePage.css';
 interface MoviePageProps {
     movie: MovieType;
     mediaType: string;
+    pathLink: string;
 }
 
-const MoviePage: FC<MoviePageProps> = ({ movie, mediaType }) => {
+const MoviePage: FC<MoviePageProps> = ({ movie, mediaType, pathLink }) => {
     return (
         <div className="movie_page_container">
             <Image
@@ -45,7 +46,7 @@ const MoviePage: FC<MoviePageProps> = ({ movie, mediaType }) => {
                         children={movie.voteCount}
                         textClassName={'padding_large'}
                     />
-                    <MovieActions movieId={movie.id} />
+                    <MovieActions movieId={movie.id} pathLink={pathLink} />
                 </div>
                 <P children={movie.tagline} />
                 <h3 className="movie_page_title_description">Description</h3>

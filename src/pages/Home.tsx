@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { MovieType } from '../../types/moviesTypes';
-import MovieList from '../../components/MovieList';
+import { MovieType } from '../types/moviesTypes';
+import MovieList from '../components/MovieList';
 
 const Home: FC = () => {
     const { moviesDay, moviesWeek } = useLoaderData() as {
@@ -24,7 +24,7 @@ const Home: FC = () => {
             title="Trending"
             movies={showToday ? moviesDay : moviesWeek}
             mediaType="movie"
-            pathLink="/"
+            pathLink="movies"
         >
             <div className="button_toggle_container">
                 <button
