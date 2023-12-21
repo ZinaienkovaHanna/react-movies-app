@@ -11,6 +11,13 @@ const Home: FC = () => {
     };
     const [showToday, setShowToday] = useState<boolean>(true);
 
+    const buttonTodayClass = showToday
+        ? 'button_today active_button'
+        : 'button_today';
+    const buttonWeekClass = !showToday
+        ? 'button_week active_button'
+        : 'button_week';
+
     return (
         <>
             <MovieList
@@ -20,21 +27,13 @@ const Home: FC = () => {
                 <div className="button_toggle_container">
                     <button
                         onClick={() => setShowToday(true)}
-                        className={
-                            showToday
-                                ? 'button_today active_button'
-                                : 'button_today'
-                        }
+                        className={buttonTodayClass}
                     >
                         today
                     </button>
                     <button
                         onClick={() => setShowToday(false)}
-                        className={
-                            !showToday
-                                ? 'button_week active_button '
-                                : 'button_week'
-                        }
+                        className={buttonWeekClass}
                     >
                         this week
                     </button>

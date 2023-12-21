@@ -9,16 +9,16 @@ import MyList from '../pages/MyList';
 import Movie from '../pages/Movie';
 import Series from '../pages/Series';
 import TrailerMovie from '../pages/TrailerMovie';
-import TrailerTv from '../pages/TrailerTv';
+import TrailerSeries from '../pages/TrailerSeries';
 import {
     homeLoader,
     moviesLoader,
     movieLoader,
-    trailerMovieLoader,
     seriesesLoader,
     seriesLoader,
-    trailerSeriesLoader,
     movieBookmakedLoader,
+    trailerMovieLoader,
+    trailerSeriesLoader,
 } from '../pages/loader';
 
 const router = createBrowserRouter([
@@ -41,11 +41,13 @@ const router = createBrowserRouter([
                 path: '/movies/:movieId',
                 element: <Movie />,
                 loader: movieLoader,
-            },
-            {
-                path: '/movies/:movieId/trailer',
-                element: <TrailerMovie />,
-                loader: trailerMovieLoader,
+                children: [
+                    {
+                        path: '/trailer',
+                        element: <TrailerMovie />,
+                        loader: trailerMovieLoader,
+                    },
+                ],
             },
             {
                 path: '/tv',
@@ -56,11 +58,13 @@ const router = createBrowserRouter([
                 path: '/tv/:tvId',
                 element: <Series />,
                 loader: seriesLoader,
-            },
-            {
-                path: '/tv/:tvId/trailer',
-                element: <TrailerTv />,
-                loader: trailerSeriesLoader,
+                children: [
+                    {
+                        path: '/trailer',
+                        element: <TrailerSeries />,
+                        loader: trailerSeriesLoader,
+                    },
+                ],
             },
             {
                 path: '/list',

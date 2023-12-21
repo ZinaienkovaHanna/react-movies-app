@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import Menu from '../components/Menu';
 import { Outlet } from 'react-router-dom';
+import Menu from '../components/Menu';
 
 const MainLayout: FC = () => {
     return (
