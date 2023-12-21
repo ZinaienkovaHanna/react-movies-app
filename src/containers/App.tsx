@@ -4,10 +4,10 @@ import { MainLayout } from '../layouts';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
-import TvSerieses from '../pages/TvSerieses';
+import Serieses from '../pages/Serieses';
 import MyList from '../pages/MyList';
 import Movie from '../pages/Movie';
-import TvSeries from '../pages/TvSeries';
+import Series from '../pages/Series';
 import TrailerMovie from '../pages/TrailerMovie';
 import TrailerTv from '../pages/TrailerTv';
 import {
@@ -15,9 +15,9 @@ import {
     moviesLoader,
     movieLoader,
     trailerMovieLoader,
-    tvSeriesesLoader,
-    tvSeriesLoader,
-    trailerTvLoader,
+    seriesesLoader,
+    seriesLoader,
+    trailerSeriesLoader,
     movieBookmakedLoader,
 } from '../pages/loader';
 
@@ -49,18 +49,18 @@ const router = createBrowserRouter([
             },
             {
                 path: '/tv',
-                element: <TvSerieses />,
-                loader: tvSeriesesLoader,
+                element: <Serieses />,
+                loader: seriesesLoader,
             },
             {
                 path: '/tv/:tvId',
-                element: <TvSeries />,
-                loader: tvSeriesLoader,
+                element: <Series />,
+                loader: seriesLoader,
             },
             {
                 path: '/tv/:tvId/trailer',
                 element: <TrailerTv />,
-                loader: trailerTvLoader,
+                loader: trailerSeriesLoader,
             },
             {
                 path: '/list',

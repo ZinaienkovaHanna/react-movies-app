@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { MovieType } from '../../types/moviesTypes';
+import { MovieType, SeriesType } from '../../types/moviesTypes';
 import MovieCard from '../MovieCard';
 import Slider from '../Slider';
 
@@ -8,19 +8,11 @@ import './MovieList.css';
 
 interface MovieCardProps {
     title: string;
-    movies: MovieType[];
-    mediaType: string;
-    pathLink: string;
+    movies: MovieType[] | SeriesType[];
     children?: ReactNode;
 }
 
-const MovieList: FC<MovieCardProps> = ({
-    movies,
-    title,
-    mediaType,
-    pathLink,
-    children,
-}) => {
+const MovieList: FC<MovieCardProps> = ({ movies, title, children }) => {
     return (
         <section className="movie_container">
             <div className="section_title_container">
@@ -30,11 +22,11 @@ const MovieList: FC<MovieCardProps> = ({
             <Slider>
                 {movies.map((movie) => (
                     <Link
-                        to={`/${pathLink}/${movie.id}`}
+                        to={`/${movie.mediaType}/${movie.id}`}
                         key={movie.id}
                         className="movie_card_link"
                     >
-                        <MovieCard movie={movie} mediaType={mediaType} />
+                        <MovieCard movie={movie} />
                     </Link>
                 ))}
             </Slider>

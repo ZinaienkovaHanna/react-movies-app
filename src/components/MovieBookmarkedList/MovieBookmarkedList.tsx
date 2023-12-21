@@ -16,11 +16,11 @@ const MovieBookmarkedList: FC<MovieBookmarkedListProps> = ({
         <div className="movie_bookmarked_list_container">
             {bookmarkedMovies.map((movie) => (
                 <Link
-                    to={`/movies/${movie.id}`}
+                    to={`/${movie.mediaType}/${movie.id}`}
                     key={movie.id}
                     className="movie_card_link"
                 >
-                    <MovieCard movie={movie} mediaType="movie" />
+                    <MovieCard movie={movie} />
                 </Link>
             ))}
         </div>

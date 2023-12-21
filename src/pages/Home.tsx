@@ -4,32 +4,22 @@ import { MovieType } from '../types/moviesTypes';
 import MovieList from '../components/MovieList';
 
 const Home: FC = () => {
-    const { moviesDay, moviesWeek, moviesTopRated } = useLoaderData() as {
-        moviesWeek: MovieType[];
-        moviesDay: MovieType[];
-        moviesTopRated: MovieType[];
+    const { dailyMovies, weeklyMovies, topRatedMovies } = useLoaderData() as {
+        weeklyMovies: MovieType[];
+        dailyMovies: MovieType[];
+        topRatedMovies: MovieType[];
     };
     const [showToday, setShowToday] = useState<boolean>(true);
-
-    const handleTodayButtonClick = () => {
-        setShowToday(true);
-    };
-
-    const handleWeekButtonClick = () => {
-        setShowToday(false);
-    };
 
     return (
         <>
             <MovieList
                 title="Trending"
-                movies={showToday ? moviesDay : moviesWeek}
-                mediaType="movie"
-                pathLink="movies"
+                movies={showToday ? dailyMovies : weeklyMovies}
             >
                 <div className="button_toggle_container">
                     <button
-                        onClick={handleTodayButtonClick}
+                        onClick={() => setShowToday(true)}
                         className={
                             showToday
                                 ? 'button_today active_button'
@@ -39,7 +29,7 @@ const Home: FC = () => {
                         today
                     </button>
                     <button
-                        onClick={handleWeekButtonClick}
+                        onClick={() => setShowToday(false)}
                         className={
                             !showToday
                                 ? 'button_week active_button '
@@ -50,12 +40,7 @@ const Home: FC = () => {
                     </button>
                 </div>
             </MovieList>
-            <MovieList
-                title="Top Rated"
-                movies={moviesTopRated}
-                mediaType="movie"
-                pathLink="movies"
-            />
+            <MovieList title="Top Rated" movies={topRatedMovies} />
         </>
     );
 };

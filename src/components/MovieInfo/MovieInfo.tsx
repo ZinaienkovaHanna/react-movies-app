@@ -6,40 +6,35 @@ import { getYearFromDate } from '../../utils/getYearFromDate';
 import { getGenreInfo } from '../../utils/getGenreInfo';
 
 import './MovieInfo.css';
+import { MovieType, SeriesType } from '../../types/moviesTypes';
 
 interface MovieInfoProps {
-    releaseDate: string;
-    genres: { id: number; name: string }[];
-    runtime: number;
-    episodes: number;
-    seasons: number;
-    mediaType: string;
+    movie: SeriesType | MovieType;
 }
 
-const MovieInfo: FC<MovieInfoProps> = ({
-    releaseDate,
-    genres,
-    runtime,
-    episodes,
-    seasons,
-    mediaType,
-}) => {
+const MovieInfo: FC<MovieInfoProps> = ({ movie }) => {
     return (
         <div className="movie_info_container">
             <P
-                children={getYearFromDate(releaseDate)}
-                textTitle={releaseDate}
+                children={getYearFromDate(movie.releaseDate)}
+                textTitle={movie.releaseDate}
             />
             <DotDivider />
-            <P children={getGenreInfo(genres)} />
+            <P children={getGenreInfo(movie.genres)} />
             <DotDivider />
-            <P
-                children={
-                    mediaType === 'movie'
-                        ? convertToHoursAndMinutes(runtime)
-                        : `${seasons} seasons, ${episodes} episodes`
-                }
-            />
+            {movie.mediaType === 'movies' ? (
+                <P
+                    children={convertToHoursAndMinutes(
+                        (movie as MovieType).runtime
+                    )}
+                />
+            ) : (
+                <P
+                    children={`${(movie as SeriesType).seasons} seasons, ${
+                        (movie as SeriesType).episodes
+                    } episodes`}
+                />
+            )}
         </div>
     );
 };
