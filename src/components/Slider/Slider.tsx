@@ -8,9 +8,10 @@ interface SliderProps {
     children: ReactNode;
 }
 
+const CARDS_WIDTH = 1200;
+const MAX_SLIDES = 5;
+
 const Slider: FC<SliderProps> = ({ children }) => {
-    const CARDS_WIDTH = 1200;
-    const MAX_SLIDES = 5;
     const [pxOffset, setPxOffset] = useState(0);
     const childArray = React.Children.toArray(children);
 
