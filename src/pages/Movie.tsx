@@ -6,7 +6,7 @@ import { MovieType } from '../types/moviesTypes';
 const Movie: FC = () => {
     const { movie } = useLoaderData() as { movie: MovieType };
 
-    return <MoviePage movie={movie} mediaType="movie" pathLink="movies" />;
+    return <MoviePage movie={movie} />;
 };
 
 export default Movie;

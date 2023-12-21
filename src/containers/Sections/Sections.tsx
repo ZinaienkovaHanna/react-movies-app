@@ -4,10 +4,9 @@ import MovieList from '../../components/MovieList';
 
 interface SectionProps {
     sections: SectionType[];
-    pathLink: string;
 }
 
-const Sections: FC<SectionProps> = ({ sections, pathLink }) => {
+const Sections: FC<SectionProps> = ({ sections }) => {
     return (
         <>
             {sections.map((section) => (
@@ -15,8 +14,6 @@ const Sections: FC<SectionProps> = ({ sections, pathLink }) => {
                     key={section.id}
                     title={section.title}
                     movies={section.movies}
-                    mediaType={section.mediaType}
-                    pathLink={pathLink}
                 />
             ))}
         </>

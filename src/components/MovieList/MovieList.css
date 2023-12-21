@@ -19,7 +19,7 @@
 }
 
 .button_toggle_container {
-    border-radius: var(--borderRadius);
+    border-radius: 16px;
     border: 1px solid var(--borderColor);
 }
 
@@ -30,8 +30,9 @@
     padding: var(--spacingBase) var(--spacingLarge);
     background-color: var(--backgroundButtonColor);
     border: none;
-    border-radius: var(--borderRadius);
+    border-radius: 16px;
     color: var(--textColor);
+    text-transform: uppercase;
     cursor: pointer;
 }
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { mdiStar, mdiFilmstrip, mdiTelevisionClassic } from '@mdi/js';
-import { MovieType } from '../../types/moviesTypes';
+import { MovieType, SeriesType } from '../../types/moviesTypes';
 import Image from '../Image';
 import P from '../P';
 import DotDivider from '../DotDivider';
@@ -10,11 +10,10 @@ import { getYearFromDate } from '../../utils/getYearFromDate';
 import './MovieCard.css';
 
 interface MovieCardProps {
-    movie: MovieType;
-    mediaType: string;
+    movie: MovieType | SeriesType;
 }
 
-const MovieCard: FC<MovieCardProps> = ({ movie, mediaType }) => {
+const MovieCard: FC<MovieCardProps> = ({ movie }) => {
     return (
         <div className="movie_card">
             <Image
@@ -37,12 +36,12 @@ const MovieCard: FC<MovieCardProps> = ({ movie, mediaType }) => {
                 <DotDivider />
                 <Label
                     iconPath={
-                        mediaType === 'movie'
+                        movie.mediaType === 'movies'
                             ? mdiFilmstrip
                             : mdiTelevisionClassic
                     }
                     iconSize={0.6}
-                    children={mediaType}
+                    children={movie.mediaType}
                     textClassName={'text_small'}
                 />
             </div>

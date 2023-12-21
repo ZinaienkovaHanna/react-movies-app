@@ -5,17 +5,15 @@ import MovieInfo from '../MovieInfo';
 import P from '../P';
 import Label from '../Label';
 import MovieActions from '../MovieActions';
-import { MovieType } from '../../types/moviesTypes';
+import { MovieType, SeriesType } from '../../types/moviesTypes';
 
 import './MoviePage.css';
 
 interface MoviePageProps {
-    movie: MovieType;
-    mediaType: string;
-    pathLink: string;
+    movie: MovieType | SeriesType;
 }
 
-const MoviePage: FC<MoviePageProps> = ({ movie, mediaType, pathLink }) => {
+const MoviePage: FC<MoviePageProps> = ({ movie }) => {
     return (
         <div className="movie_page_container">
             <Image
@@ -25,14 +23,7 @@ const MoviePage: FC<MoviePageProps> = ({ movie, mediaType, pathLink }) => {
             />
             <div>
                 <h2 className="movie_page_title">{movie.title}</h2>
-                <MovieInfo
-                    releaseDate={movie.releaseDate}
-                    genres={movie.genres}
-                    runtime={movie.runtime}
-                    episodes={movie.episodes}
-                    seasons={movie.seasons}
-                    mediaType={mediaType}
-                />
+                <MovieInfo movie={movie} />
                 <div className="button_container">
                     <Label
                         iconPath={mdiStar}
@@ -46,7 +37,10 @@ const MoviePage: FC<MoviePageProps> = ({ movie, mediaType, pathLink }) => {
                         children={movie.voteCount}
                         textClassName={'padding_large'}
                     />
-                    <MovieActions movieId={movie.id} pathLink={pathLink} />
+                    <MovieActions
+                        movieId={movie.id}
+                        pathLink={movie.mediaType}
+                    />
                 </div>
                 <P children={movie.tagline} />
                 <h3 className="movie_page_title_description">Description</h3>

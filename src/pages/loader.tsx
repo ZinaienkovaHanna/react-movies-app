@@ -3,25 +3,40 @@ import {
     getTrendingMovies,
     getMovies,
     getMovieById,
-    getTvSeries,
+    getSeries,
+    getSeriesById,
     getMovieTrailerById,
+    getSeriesTrailerById,
 } from '../services';
 
 export const homeLoader = async () => {
-    const moviesDay = await getTrendingMovies('day');
-    const moviesWeek = await getTrendingMovies('week');
-    const moviesTopRated = await getMovies('top_rated');
+    try {
+        const dailyMovies = await getTrendingMovies('day');
+        const weeklyMovies = await getTrendingMovies('week');
+        const topRatedMovies = await getMovies('top_rated');
 
-    return { moviesDay, moviesWeek, moviesTopRated };
+        return { dailyMovies, weeklyMovies, topRatedMovies };
+    } catch (error) {
+        throw new Error('Error loading home data');
+    }
 };
 
 export const moviesLoader = async () => {
-    const moviesUpcoming = await getMovies('upcoming');
-    const moviesNowPlaying = await getMovies('now_playing');
-    const moviesPopular = await getMovies('popular');
-    const moviesTopRated = await getMovies('top_rated');
+    try {
+        const upcomingMovies = await getMovies('upcoming');
+        const nowPlayingMovies = await getMovies('now_playing');
+        const popularMovies = await getMovies('popular');
+        const topRatedMovies = await getMovies('top_rated');
 
-    return { moviesUpcoming, moviesNowPlaying, moviesPopular, moviesTopRated };
+        return {
+            upcomingMovies,
+            nowPlayingMovies,
+            popularMovies,
+            topRatedMovies,
+        };
+    } catch (error) {
+        throw new Error('Error loading movies');
+    }
 };
 
 export const movieLoader = async ({
@@ -29,15 +44,19 @@ export const movieLoader = async ({
 }: {
     params: Params<'movieId'>;
 }) => {
-    const movieId = params.movieId;
+    try {
+        const movieId = params.movieId;
 
-    if (!movieId) {
-        throw new Error('Movie ID is undefined');
+        if (!movieId) {
+            throw new Error('Movie ID is undefined');
+        }
+
+        const movie = await getMovieById(movieId);
+
+        return { movie };
+    } catch (error) {
+        throw new Error('Error loading movie');
     }
-
-    const movie = await getMovieById('movie', movieId);
-
-    return { movie };
 };
 
 export const trailerMovieLoader = async ({
@@ -45,62 +64,76 @@ export const trailerMovieLoader = async ({
 }: {
     params: Params<'movieId'>;
 }) => {
-    const movieId = params.movieId;
+    try {
+        const movieId = params.movieId;
 
-    if (!movieId) {
-        throw new Error('Movie ID is undefined');
+        if (!movieId) {
+            throw new Error('Movie ID is undefined');
+        }
+
+        const trailerKeyMovie = await getMovieTrailerById(movieId);
+
+        return { trailerKeyMovie };
+    } catch (error) {
+        throw new Error('Error loading trailer movie');
     }
-
-    const trailerKeyMovie = await getMovieTrailerById('movie', movieId);
-
-    return { trailerKeyMovie };
 };
 
-export const tvSeriesesLoader = async () => {
-    const tvSeriesAiringToday = await getTvSeries('airing_today');
-    const tvSeriesOnTheAir = await getTvSeries('on_the_air');
-    const tvSeriesPopular = await getTvSeries('popular');
-    const tvSeriesTopRated = await getTvSeries('top_rated');
+export const seriesesLoader = async () => {
+    try {
+        const airingTodaySeries = await getSeries('airing_today');
+        const onTheAirSeries = await getSeries('on_the_air');
+        const popularSeries = await getSeries('popular');
+        const topRatedSeries = await getSeries('top_rated');
 
-    return {
-        tvSeriesAiringToday,
-        tvSeriesOnTheAir,
-        tvSeriesPopular,
-        tvSeriesTopRated,
-    };
+        return {
+            airingTodaySeries,
+            onTheAirSeries,
+            popularSeries,
+            topRatedSeries,
+        };
+    } catch (error) {
+        throw new Error('Error loading TV Serieses');
+    }
 };
 
-export const tvSeriesLoader = async ({
+export const seriesLoader = async ({ params }: { params: Params<'tvId'> }) => {
+    try {
+        const tvId = params.tvId;
+
+        if (!tvId) {
+            throw new Error('TV Series ID is undefined');
+        }
+
+        const tvSeries = await getSeriesById(tvId);
+
+        return { tvSeries };
+    } catch (error) {
+        throw new Error('Error loading TV Series');
+    }
+};
+
+export const trailerSeriesLoader = async ({
     params,
 }: {
     params: Params<'tvId'>;
 }) => {
-    const tvId = params.tvId;
+    try {
+        const tvId = params.tvId;
 
-    if (!tvId) {
-        throw new Error('TV Series ID is undefined');
+        if (!tvId) {
+            throw new Error('TV Series ID is undefined');
+        }
+
+        const trailerKeyTv = await getSeriesTrailerById(tvId);
+
+        return { trailerKeyTv };
+    } catch (error) {
+        throw new Error('Error loading trailer TV Series');
     }
-
-    const tvSeries = await getMovieById('tv', tvId);
-
-    return { tvSeries };
 };
 
-export const trailerTvLoader = async ({
-    params,
-}: {
-    params: Params<'tvId'>;
-}) => {
-    const tvId = params.tvId;
-
-    if (!tvId) {
-        throw new Error('TV ID is undefined');
-    }
-
-    const trailerKeyTv = await getMovieTrailerById('tv', tvId);
-
-    return { trailerKeyTv };
-};
+// FIXED:
 
 export const movieBookmakedLoader = async () => {
     const bookmarkStatus = localStorage.getItem('bookmarked_movies');
@@ -112,7 +145,7 @@ export const movieBookmakedLoader = async () => {
 
         for (const movieId of bookmarkedMoviesId) {
             try {
-                const movie = await getMovieById('movie', movieId);
+                const movie = await getMovieById(movieId);
                 bookmarkedMovies.push(movie);
             } catch (error) {
                 console.error(
