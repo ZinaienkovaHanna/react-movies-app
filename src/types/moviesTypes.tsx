@@ -69,3 +69,8 @@ export interface SectionType {
     movies: MovieType[] | SeriesType[];
     mediaType: string;
 }
+
+export interface MediaStatusType {
+    reaction: 'liked' | 'disliked' | 'undefined';
+    bookmarked: 'true' | 'false' | 'undefined';
+}

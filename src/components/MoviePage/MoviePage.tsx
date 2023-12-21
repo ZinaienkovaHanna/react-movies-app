@@ -39,7 +39,7 @@ const MoviePage: FC<MoviePageProps> = ({ movie }) => {
                     />
                     <MovieActions
                         movieId={movie.id}
-                        pathLink={movie.mediaType}
+                        mediaType={movie.mediaType}
                     />
                 </div>
                 <P children={movie.tagline} />

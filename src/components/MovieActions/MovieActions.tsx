@@ -10,91 +10,83 @@ import {
     mdiBookmark,
 } from '@mdi/js';
 import IconButton from '../IconButton';
+import { MediaStatusType } from '../../types/moviesTypes';
+import { getMovieStatus, updateMovieStatus } from '../../utils/localStorage';
 
 interface MovieActionsProps {
     movieId: number;
-    pathLink: string;
+    mediaType: string;
 }
 
-const MovieActions: FC<MovieActionsProps> = ({ movieId, pathLink }) => {
-    const [liked, setLiked] = useState<boolean>(false);
-    const [disliked, setDisliked] = useState<boolean>(false);
-    const [bookmarked, setBookmarked] = useState<boolean>(false);
+const MovieActions: FC<MovieActionsProps> = ({ movieId, mediaType }) => {
+    const [status, setStatus] = useState<MediaStatusType>({
+        reaction: 'undefined',
+        bookmarked: 'undefined',
+    });
 
     useEffect(() => {
-        const likedStatus = localStorage.getItem(`liked_${movieId}`);
-        const dislikedStatus = localStorage.getItem(`disliked_${movieId}`);
+        const storedStatus = getMovieStatus(mediaType, movieId);
 
-        if (likedStatus !== null) {
-            setLiked(likedStatus === 'true');
+        if (storedStatus) {
+            setStatus(storedStatus);
         }
-
-        if (dislikedStatus !== null) {
-            setDisliked(dislikedStatus === 'true');
-        }
-    }, [movieId]);
-
-    useEffect(() => {
-        const bookmarkStatus = localStorage.getItem('bookmarked_movies');
-
-        if (bookmarkStatus !== null) {
-            const bookmarkedMovies: number[] = JSON.parse(bookmarkStatus);
-            setBookmarked(bookmarkedMovies.includes(movieId));
-        }
-    }, [movieId]);
+    }, [mediaType, movieId]);
 
     const handleLikeClick = () => {
-        setLiked(!liked);
-        setDisliked(false);
-        localStorage.setItem(`liked_${movieId}`, (!liked).toString());
-        localStorage.removeItem(`disliked_${movieId}`);
+        const newStatus: MediaStatusType = {
+            ...status,
+            reaction: status.reaction === 'liked' ? 'undefined' : 'liked',
+        };
+        setStatus(newStatus);
+        updateMovieStatus(mediaType, movieId, newStatus);
     };
 
-    const handleDisLikeClick = () => {
-        setDisliked(!disliked);
-        setLiked(false);
-        localStorage.setItem(`disliked_${movieId}`, (!disliked).toString());
-        localStorage.removeItem(`liked_${movieId}`);
+    const handleDislikeClick = () => {
+        const newStatus: MediaStatusType = {
+            ...status,
+            reaction: status.reaction === 'disliked' ? 'undefined' : 'disliked',
+        };
+        setStatus(newStatus);
+        updateMovieStatus(mediaType, movieId, newStatus);
     };
 
     const handleBookmarkClick = () => {
-        const bookmarkStatus = localStorage.getItem('bookmarked_movies');
-        let bookmarkedMovies: number[] = bookmarkStatus
-            ? JSON.parse(bookmarkStatus)
-            : [];
-
-        if (bookmarked) {
-            bookmarkedMovies = bookmarkedMovies.filter((id) => id !== movieId);
-        } else {
-            bookmarkedMovies.push(movieId);
-        }
-
-        localStorage.setItem(
-            'bookmarked_movies',
-            JSON.stringify(bookmarkedMovies)
-        );
-
-        setBookmarked(!bookmarked);
+        const newStatus: MediaStatusType = {
+            ...status,
+            bookmarked: status.bookmarked === 'true' ? 'false' : 'true',
+        };
+        setStatus(newStatus);
+        updateMovieStatus(mediaType, movieId, newStatus);
     };
 
     return (
         <>
             <IconButton
-                iconPath={liked ? mdiThumbUp : mdiThumbUpOutline}
+                iconPath={
+                    status.reaction === 'liked' ? mdiThumbUp : mdiThumbUpOutline
+                }
                 iconSize={1}
                 onClick={handleLikeClick}
             />
             <IconButton
-                iconPath={disliked ? mdiThumbDown : mdiThumbDownOutline}
+                iconPath={
+                    status.reaction === 'disliked'
+                        ? mdiThumbDown
+                        : mdiThumbDownOutline
+                }
                 iconSize={1}
-                onClick={handleDisLikeClick}
+                onClick={handleDislikeClick}
             />
             <IconButton
-                iconPath={bookmarked ? mdiBookmark : mdiBookmarkOutline}
+                iconPath={
+                    status.bookmarked === 'true'
+                        ? mdiBookmark
+                        : mdiBookmarkOutline
+                }
                 iconSize={1}
                 onClick={handleBookmarkClick}
             />
-            <Link to={`/${pathLink}/${movieId}/trailer`}>
+            <Link to={`/${mediaType}/${movieId}/trailer`}>
                 <IconButton iconPath={mdiYoutube} iconSize={2} />
             </Link>
         </>

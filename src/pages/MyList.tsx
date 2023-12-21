@@ -4,11 +4,13 @@ import { MovieType } from '../types/moviesTypes';
 import MovieBookmarkedList from '../components/MovieBookmarkedList';
 
 const MyList: FC = () => {
-    const { bookmarkedMovies } = useLoaderData() as {
-        bookmarkedMovies: MovieType[];
+    const { bookmarkedMoviesAndSerieses } = useLoaderData() as {
+        bookmarkedMoviesAndSerieses: MovieType[];
     };
 
-    return <MovieBookmarkedList bookmarkedMovies={bookmarkedMovies} />;
+    return (
+        <MovieBookmarkedList bookmarkedMovies={bookmarkedMoviesAndSerieses} />
+    );
 };
 
 export default MyList;

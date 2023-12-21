@@ -8,6 +8,7 @@ import {
     getMovieTrailerById,
     getSeriesTrailerById,
 } from '../services';
+import { getBookmarkedKeys } from '../utils/localStorage';
 
 export const homeLoader = async () => {
     try {
@@ -133,30 +134,31 @@ export const trailerSeriesLoader = async ({
     }
 };
 
-// FIXED:
-
 export const movieBookmakedLoader = async () => {
-    const bookmarkStatus = localStorage.getItem('bookmarked_movies');
+    const bookmarkedKeys = getBookmarkedKeys();
+    const bookmarkedMoviesAndSerieses = [];
 
-    if (bookmarkStatus !== null) {
-        const bookmarkedMoviesId = JSON.parse(bookmarkStatus);
+    for (const keyObj of bookmarkedKeys) {
+        const keys = Object.keys(keyObj);
+        const key = keys[0];
+        const id = keyObj[key];
 
-        const bookmarkedMovies = [];
+        try {
+            let movie = null;
 
-        for (const movieId of bookmarkedMoviesId) {
-            try {
-                const movie = await getMovieById(movieId);
-                bookmarkedMovies.push(movie);
-            } catch (error) {
-                console.error(
-                    `Error fetching movie with ID ${movieId}:`,
-                    error
-                );
+            if (key === 'movies') {
+                movie = await getMovieById(id);
+            } else if (key === 'tv') {
+                movie = await getSeriesById(id);
             }
-        }
 
-        return { bookmarkedMovies };
+            if (movie) {
+                bookmarkedMoviesAndSerieses.push(movie);
+            }
+        } catch (error) {
+            console.error(`Error fetching movie:`, error);
+        }
     }
 
-    return { bookmarkedMovies: [] };
+    return { bookmarkedMoviesAndSerieses };
 };
