@@ -43,7 +43,7 @@ const router = createBrowserRouter([
                 loader: movieLoader,
                 children: [
                     {
-                        path: '/trailer',
+                        path: '/movies/:movieId/trailer',
                         element: <TrailerMovie />,
                         loader: trailerMovieLoader,
                     },
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
                 loader: seriesLoader,
                 children: [
                     {
-                        path: '/trailer',
+                        path: '/tv/:tvId/trailer',
                         element: <TrailerSeries />,
                         loader: trailerSeriesLoader,
                     },
