@@ -47,6 +47,9 @@
     /* ### Height */
     --menuHeight: 60px;
     --movieCardHeight: 128px;
+
+    /* ### Margin */
+    --arrowMargin: 90px;
 }
 
 body {

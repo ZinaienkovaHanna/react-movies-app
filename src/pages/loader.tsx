@@ -14,9 +14,10 @@ export const homeLoader = async () => {
     try {
         const dailyMovies = await getTrendingMovies('day');
         const weeklyMovies = await getTrendingMovies('week');
+        const popularMovies = await getMovies('popular');
         const topRatedMovies = await getMovies('top_rated');
 
-        return { dailyMovies, weeklyMovies, topRatedMovies };
+        return { dailyMovies, weeklyMovies, popularMovies, topRatedMovies };
     } catch (error) {
         throw new Error('Error loading home data');
     }
@@ -40,11 +41,7 @@ export const moviesLoader = async () => {
     }
 };
 
-export const movieLoader = async ({
-    params,
-}: {
-    params: Params<'movieId'>;
-}) => {
+export const movieLoader = async ({ params }: { params: Params<'movieId'> }) => {
     try {
         const movieId = params.movieId;
 
@@ -60,11 +57,7 @@ export const movieLoader = async ({
     }
 };
 
-export const trailerMovieLoader = async ({
-    params,
-}: {
-    params: Params<'movieId'>;
-}) => {
+export const trailerMovieLoader = async ({ params }: { params: Params<'movieId'> }) => {
     try {
         const movieId = params.movieId;
 
@@ -114,11 +107,7 @@ export const seriesLoader = async ({ params }: { params: Params<'tvId'> }) => {
     }
 };
 
-export const trailerSeriesLoader = async ({
-    params,
-}: {
-    params: Params<'tvId'>;
-}) => {
+export const trailerSeriesLoader = async ({ params }: { params: Params<'tvId'> }) => {
     try {
         const tvId = params.tvId;
 

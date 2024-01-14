@@ -27,6 +27,7 @@
     border: none;
     cursor: pointer;
     opacity: 0.25;
+    margin-top: calc(-1 * var(--arrowMargin));
 }
 
 .prev_arrow:hover,

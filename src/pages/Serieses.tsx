@@ -15,26 +15,26 @@ const Series: FC = () => {
     const sections: SectionType[] = [
         {
             id: 0,
-            title: 'Airing Today',
-            movies: airingTodaySeries,
-            mediaType: 'TV Series',
-        },
-        {
-            id: 1,
-            title: 'On The Air',
-            movies: onTheAirSeries,
-            mediaType: 'TV Series',
-        },
-        {
-            id: 2,
             title: 'Popular',
             movies: popularSeries,
             mediaType: 'TV Series',
         },
         {
-            id: 3,
+            id: 1,
             title: 'Top Rated',
             movies: topRatedSeries,
+            mediaType: 'TV Series',
+        },
+        {
+            id: 2,
+            title: 'Airing Today',
+            movies: airingTodaySeries,
+            mediaType: 'TV Series',
+        },
+        {
+            id: 3,
+            title: 'On The Air',
+            movies: onTheAirSeries,
             mediaType: 'TV Series',
         },
     ];
